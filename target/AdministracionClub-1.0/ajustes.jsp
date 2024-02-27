@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="componentes/header.jsp" %>
-<body>
+<body style="background-color: #141e30; color: #fff;">
     <div class="d-flex" id="wrapper">
 
         <%@include file="componentes/sidebar.jsp" %>
@@ -12,15 +12,15 @@
             <!-- Page content-->
             <div class="container-fluid">
                 <h1 class="mt-4">Esta es la página de Ajustes</h1>
-             
-                <p class="mt-4">Suba la imagen del escudo de su equipo:</p>
+
+                <p class="mt-4" style="color: #fff;">Suba la imagen del escudo de su equipo:</p>
                 <!-- Formulario para subir la imagen del equipo -->
                 <form action="upload_image.jsp" method="post" enctype="multipart/form-data">
                     <div class="mb-3">
-                        <label for="imageFile" class="form-label">Seleccione un archivo JPG:</label>
+                        <label for="imageFile" class="form-label" style="color: #fff;">Seleccione un archivo JPG:</label>
                         <input type="file" class="form-control" id="imageFile" name="imageFile" accept=".jpg">
                     </div>
-                    <button type="submit" class="btn btn-primary">Subir Imagen</button>
+                    <button type="submit" class="btn btn-primary" style="background-color: #03e9f4; border-color: #03e9f4; color: black;">Subir Imagen</button>
                 </form>
             </div>
         </div>
@@ -31,4 +31,3 @@
     <script src="js/scripts.js"></script>
 </body>
 </html>
-

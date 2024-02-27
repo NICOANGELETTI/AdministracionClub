@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="componentes/header.jsp" %>
-<body>
+<body style="background-color: #141e30; color: #fff;">
     <div class="d-flex" id="wrapper">
 
         <%@include file="componentes/sidebar.jsp" %>
@@ -14,26 +14,26 @@
                 <h1 class="mt-4">Estadisticas de la Temporada</h1>
 
                 <!-- Tabla de goleadores -->
-                <h2>Goleadores</h2>
+                <h2 style="color: white;">Goleadores</h2>
                 <div class="table-responsive">
-                    <table class="table table-striped">
+                    <table class="table table-striped" style="color: #fff;">
                         <thead>
                             <tr>
-                                <th>Nombre</th>
-                                <th>Nacionalidad</th>
-                                <th>Goles</th>
-                                <th class="text-center">Acciones</th><!-- Añadimos la clase text-center -->
+                                <th style="color: white;">Nombre</th>
+                                <th style="color: white;">Nacionalidad</th>
+                                <th style="color: white;">Goles</th>
+                                <th class="text-center" style="color: white;">Acciones</th><!-- Añadimos la clase text-center -->
                             </tr>
                         </thead>
                         <tbody>
                             <!-- Aquí se pueden agregar más filas según la lista de goleadores -->
                             <tr>
-                                <td>Jugador 1</td>
-                                <td>Argentina</td>
-                                <td>10</td>
+                                <td style="color: white;">Jugador 1</td>
+                                <td style="color: white;">Argentina</td>
+                                <td style="color: white;">10</td>
                                 <td class="text-center"><!-- Añadimos la clase text-center -->
-                                    <button type="button" class="btn btn-primary">Editar</button>
-                                    <button type="button" class="btn btn-danger">Eliminar</button>
+                                    <button type="button" class="btn btn-primary" style="background-color: #03e9f4; border-color: #03e9f4; color: black;">Editar</button>
+                                    <button type="button" class="btn btn-danger" style="background-color: #ff0000; border-color: #ff0000; color: black;">Eliminar</button>
                                 </td>
                             </tr>
                         </tbody>
@@ -41,30 +41,30 @@
                 </div>
                 <!-- Botón para agregar goleador -->
                 <div class="mb-3">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agregarGoleadorModal">Agregar Goleador</button>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agregarGoleadorModal" style="background-color: #03e9f4; border-color: #03e9f4; color: black;">Agregar Goleador</button>
                 </div>
 
                 <!-- Tabla de asistidores -->
-                <h2>Asistidores</h2>
+                <h2 style="color: white;">Asistidores</h2>
                 <div class="table-responsive">
-                    <table class="table table-striped">
+                    <table class="table table-striped" style="color: #fff;">
                         <thead>
                             <tr>
-                                <th>Nombre</th>
-                                <th>Nacionalidad</th>
-                                <th>Asist</th>
-                                <th class="text-center">Acciones</th><!-- Añadimos la clase text-center -->
+                                <th style="color: white;">Nombre</th>
+                                <th style="color: white;">Nacionalidad</th>
+                                <th style="color: white;">Asist</th>
+                                <th class="text-center" style="color: white;">Acciones</th><!-- Añadimos la clase text-center -->
                             </tr>
                         </thead>
                         <tbody>
                             <!-- Aquí se pueden agregar más filas según la lista de asistidores -->
                             <tr>
-                                <td>Jugador 2</td>
-                                <td>Brasil</td>
-                                <td>8</td>
+                                <td style="color: white;">Jugador 2</td>
+                                <td style="color: white;">Brasil</td>
+                                <td style="color: white;">8</td>
                                 <td class="text-center"><!-- Añadimos la clase text-center -->
-                                    <button type="button" class="btn btn-primary">Editar</button>
-                                    <button type="button" class="btn btn-danger">Eliminar</button>
+                                    <button type="button" class="btn btn-primary" style="background-color: #03e9f4; border-color: #03e9f4; color: black;">Editar</button>
+                                    <button type="button" class="btn btn-danger" style="background-color: #ff0000; border-color: #ff0000; color: black;">Eliminar</button>
                                 </td>
                             </tr>
                         </tbody>
@@ -72,32 +72,32 @@
                 </div>
                 <!-- Botón para agregar asistidor -->
                 <div class="mb-3">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agregarAsistidorModal">Agregar Asistidor</button>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agregarAsistidorModal" style="background-color: #03e9f4; border-color: #03e9f4; color: black;">Agregar Asistidor</button>
                 </div>
 
                 <!-- Tabla de tarjetas -->
                 <div class="row">
                     <div class="col-md-6">
-                        <h2>Tarjetas Provocadas</h2>
+                        <h2 style="color: white;">Tarjetas Provocadas</h2>
                         <div class="table-responsive">
-                            <table class="table table-striped">
+                            <table class="table table-striped" style="color: #fff;">
                                 <thead>
                                     <tr>
-                                        <th></th>
-                                        <th>Amarillas</th>
-                                        <th>Rojas</th>
+                                        <th style="color: white;"></th>
+                                        <th style="color: white;">Amarillas</th>
+                                        <th style="color: white;">Rojas</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>Equipo 1</td>
-                                        <td>5</td>
-                                        <td>1</td>
+                                        <td style="color: white;">Equipo 1</td>
+                                        <td style="color: white;">5</td>
+                                        <td style="color: white;">1</td>
                                     </tr>
                                     <tr>
-                                        <td>Equipo 2</td>
-                                        <td>3</td>
-                                        <td>2</td>
+                                        <td style="color: white;">Equipo 2</td>
+                                        <td style="color: white;">3</td>
+                                        <td style="color: white;">2</td>
                                     </tr>
                                     <!-- Agrega más filas según sea necesario -->
                                 </tbody>
@@ -105,26 +105,26 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <h2>Tarjetas Recibidas</h2>
+                        <h2 style="color: white;">Tarjetas Recibidas</h2>
                         <div class="table-responsive">
-                            <table class="table table-striped">
+                            <table class="table table-striped" style="color: #fff;">
                                 <thead>
                                     <tr>
-                                        <th></th>
-                                        <th>Amarillas</th>
-                                        <th>Rojas</th>
+                                        <th style="color: white;"></th>
+                                        <th style="color: white;">Amarillas</th>
+                                        <th style="color: white;">Rojas</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>Jugador 1</td>
-                                        <td>2</td>
-                                        <td>0</td>
+                                        <td style="color: white;">Jugador 1</td>
+                                        <td style="color: white;">2</td>
+                                        <td style="color: white;">0</td>
                                     </tr>
                                     <tr>
-                                        <td>Jugador 2</td>
-                                        <td>1</td>
-                                        <td>1</td>
+                                        <td style="color: white;">Jugador 2</td>
+                                        <td style="color: white;">1</td>
+                                        <td style="color: white;">1</td>
                                     </tr>
                                     <!-- Agrega más filas según sea necesario -->
                                 </tbody>
@@ -137,26 +137,26 @@
                 <!-- Tabla de penales -->
                 <div class="row">
                     <div class="col-md-6">
-                        <h2>Penales a Favor</h2>
+                        <h2 style="color: white;">Penales a Favor</h2>
                         <div class="table-responsive">
-                            <table class="table table-striped">
+                            <table class="table table-striped" style="color: #fff;">
                                 <thead>
                                     <tr>
-                                        <th></th>
-                                        <th>Penales Convertidos</th>
-                                        <th>Penales Errados</th>
+                                        <th style="color: white;"></th>
+                                        <th style="color: white;">Penales Convertidos</th>
+                                        <th style="color: white;">Penales Errados</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>Equipo 1</td>
-                                        <td>5</td>
-                                        <td>1</td>
+                                        <td style="color: white;">Equipo 1</td>
+                                        <td style="color: white;">5</td>
+                                        <td style="color: white;">1</td>
                                     </tr>
                                     <tr>
-                                        <td>Equipo 2</td>
-                                        <td>3</td>
-                                        <td>2</td>
+                                        <td style="color: white;">Equipo 2</td>
+                                        <td style="color: white;">3</td>
+                                        <td style="color: white;">2</td>
                                     </tr>
                                     <!-- Agrega más filas según sea necesario -->
                                 </tbody>
@@ -164,26 +164,26 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <h2>Penales en Contra</h2>
+                        <h2 style="color: white;">Penales en Contra</h2>
                         <div class="table-responsive">
-                            <table class="table table-striped">
+                            <table class="table table-striped" style="color: #fff;">
                                 <thead>
                                     <tr>
-                                        <th></th>
-                                        <th>Penales Recibidos</th>
-                                        <th>Penales Atajados</th>
+                                        <th style="color: white;"></th>
+                                        <th style="color: white;">Penales Recibidos</th>
+                                        <th style="color: white;">Penales Atajados</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>Equipo 1</td>
-                                        <td>3</td>
-                                        <td>1</td>
+                                        <td style="color: white;">Equipo 1</td>
+                                        <td style="color: white;">3</td>
+                                        <td style="color: white;">1</td>
                                     </tr>
                                     <tr>
-                                        <td>Equipo 2</td>
-                                        <td>2</td>
-                                        <td>0</td>
+                                        <td style="color: white;">Equipo 2</td>
+                                        <td style="color: white;">2</td>
+                                        <td style="color: white;">0</td>
                                     </tr>
                                     <!-- Agrega más filas según sea necesario -->
                                 </tbody>
@@ -196,17 +196,17 @@
                 <!-- Tabla de posesión promedio -->
                 <div class="row justify-content-center">
                     <div class="col-md-6">
-                        <h2 class="text-center">Posesión Promedio</h2>
+                        <h2 class="text-center" style="color: white;">Posesión Promedio</h2>
                         <div class="table-responsive">
-                            <table class="table table-striped text-center">
+                            <table class="table table-striped text-center" style="color: #fff;">
                                 <thead>
                                     <tr>
-                                        <th>Posesión Promedio (%)</th>
+                                        <th style="color: white;">Posesión Promedio (%)</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>55</td>
+                                        <td style="color: white;">55</td>
                                     </tr>
                                     <!-- Agrega más filas según sea necesario -->
                                 </tbody>
@@ -226,6 +226,7 @@
     <!-- Modal para agregar goleador -->
     <div class="modal fade" id="agregarGoleadorModal" tabindex="-1" aria-labelledby="agregarGoleadorModalLabel" aria-hidden="true">
         <!-- Contenido del modal para agregar goleador -->
+        
     </div>
     <!-- Modal para agregar asistidor -->
     <div class="modal fade" id="agregarAsistidorModal" tabindex="-1" aria-labelledby="agregarAsistidorModalLabel" aria-hidden="true">

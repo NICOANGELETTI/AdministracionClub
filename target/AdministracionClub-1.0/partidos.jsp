@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="componentes/header.jsp" %>
-<body>
+<body style="background-color: #141e30; color: #fff;">
     <div class="d-flex" id="wrapper">
 
         <%@include file="componentes/sidebar.jsp" %>
@@ -13,38 +13,36 @@
             <div class="container-fluid">
                 <h1 class="mt-4">Lista de Partidos Programados</h1>
                 <div class="table-responsive">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>Fecha</th>
-                                <th>Rival</th>
-                                <th>Lugar</th>
-                                <th>Estadio</th>
-                                <th>Árbitro</th>
-                                <th>Acciones</th>
-                                <th>Estado</th>
+                   <table class="table table-striped" style="color: #fff;">
+    <thead>
+        <tr>
+            <th>Fecha</th>
+            <th>Rival</th>
+            <th>Lugar</th>
+            <th>Estadio</th>
+            <th>Árbitro</th>
+            <th>Acciones</th>
+            <th>Estado</th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr>
+            <td style="color: #fff;">2024-02-28</td>
+            <td style="color: #fff;">Equipo A</td>
+            <td style="color: #fff;">Estadio A</td>
+            <td style="color: #fff;">Local</td>
+            <td style="color: #fff;">Árbitro 1</td>
+            <td style="color: #fff;">
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#cargarResultadoModal" style="background-color: #03e9f4; border-color: #03e9f4; color: black;">Cargar Resultado</button>
+            </td>
+            <td style="color: #fff;">Sin Cargar</td>
+        </tr>
+        <!-- Aquí se pueden agregar más filas según la cantidad de partidos -->
+    </tbody>
+</table>
 
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>2024-02-28</td>
-                                <td>Equipo A</td>
-                                <td>Estadio A</td>
-                                <td>Local</td>
-                                <td>Árbitro 1</td>
-                                
-                                <td>
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#cargarResultadoModal">Cargar Resultado</button>
-                                </td>
-                                <td>Sin Cargar</td>
-
-                            </tr>
-                            <!-- Aquí se pueden agregar más filas según la cantidad de partidos -->
-                        </tbody>
-                    </table>
                 </div>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#cargarProximoPartidoModal">Cargar Partido Próximo</button>
+<button type="button" class="btn" style="width: 20%; padding: 10px 20px; font-size: 16px; background: #03e9f4; border: none; outline: none; border-radius: 5px; cursor: pointer; transition: background 0.3s ease; color: #000;" data-bs-toggle="modal" data-bs-target="#cargarProximoPartidoModal">Cargar Partido Próximo</button>
             </div>
         </div>
     </div>
@@ -57,11 +55,12 @@
     <!-- Modal para cargar resultado del partido -->
     <div class="modal fade" id="cargarResultadoModal" tabindex="-1" aria-labelledby="cargarResultadoModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="cargarResultadoModalLabel">Cargar Resultado del Partido</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
+            <div class="modal-content" style="background-color: #141e30; color: #fff;">
+             <div class="modal-header">
+    <h5 class="modal-title" id="cargarResultadoModalLabel">Cargar Resultado del Partido</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+
                 <div class="modal-body">
                     <!-- Formulario para cargar resultado del partido -->
                     <form>
@@ -118,7 +117,7 @@
     <!-- Modal para cargar próximo partido -->
     <div class="modal fade" id="cargarProximoPartidoModal" tabindex="-1" aria-labelledby="cargarProximoPartidoModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <div class="modal-content">
+            <div class="modal-content" style="background-color: #141e30; color: #fff;">
                 <div class="modal-header">
                     <h5 class="modal-title" id="cargarProximoPartidoModalLabel">Cargar Próximo Partido</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
