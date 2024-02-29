@@ -8,6 +8,7 @@
         <a class="list-group-item list-group-item-action list-group-item-light p-3" href="partidos.jsp">Partidos</a>
         <a class="list-group-item list-group-item-action list-group-item-light p-3" href="jugadores.jsp">Jugadores</a>
         <a class="list-group-item list-group-item-action list-group-item-light p-3" href="estadisticas.jsp">Estadisticas</a>
+        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="presupuesto.jsp">Presupuesto</a>
         <a class="list-group-item list-group-item-action list-group-item-light p-3" href="ajustes.jsp">Ajustes</a>
     </div>
 </div>
