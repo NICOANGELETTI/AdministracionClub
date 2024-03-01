@@ -27,14 +27,16 @@ public class EstadisticaJpaController implements Serializable {
     }
     private EntityManagerFactory emf = null;
 
-    public EstadisticaJpaController(){
-    emf = Persistence.createEntityManagerFactory("administracionClub_PU");
-}
-    
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
 
+    
+    
+    public EstadisticaJpaController(){
+        emf = Persistence.createEntityManagerFactory("AdministracionClub_PU");
+        
+    }
     public void create(Estadistica estadistica) {
         EntityManager em = null;
         try {

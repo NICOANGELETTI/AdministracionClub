@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 
 @Entity
@@ -29,6 +30,18 @@ public class Resultado implements Serializable {
     private Partido partido;
   
     public Resultado() {
+    }
+
+    public Resultado(String nombreEquipoL, String nombreEquipoV, int golesEquipoLocal, int golesEquipoVisitante, int tarjetasAmarillas_recibidas, int tarjetasRojas_recibidas, int tarjetasAmarillas_provocadas, int tarjetasRojas_provocadas, Partido partido) {
+        this.nombreEquipoL = nombreEquipoL;
+        this.nombreEquipoV = nombreEquipoV;
+        this.golesEquipoLocal = golesEquipoLocal;
+        this.golesEquipoVisitante = golesEquipoVisitante;
+        this.tarjetasAmarillas_recibidas = tarjetasAmarillas_recibidas;
+        this.tarjetasRojas_recibidas = tarjetasRojas_recibidas;
+        this.tarjetasAmarillas_provocadas = tarjetasAmarillas_provocadas;
+        this.tarjetasRojas_provocadas = tarjetasRojas_provocadas;
+        this.partido = partido;
     }
 
     public Resultado(int idResultado, String nombreEquipoL, String nombreEquipoV, int golesEquipoLocal, int golesEquipoVisitante, int tarjetasAmarillas_recibidas, int tarjetasRojas_recibidas, int tarjetasAmarillas_provocadas, int tarjetasRojas_provocadas, Partido partido) {

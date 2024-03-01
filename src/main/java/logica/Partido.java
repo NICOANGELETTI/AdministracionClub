@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -29,6 +30,16 @@ public class Partido implements Serializable {
    
 
     public Partido() {
+    }
+
+    public Partido(int idPartido, Date fecha, String rival, String lugar, String estadio, String arbitro, boolean estadoPartido) {
+        this.idPartido = idPartido;
+        this.fecha = fecha;
+        this.rival = rival;
+        this.lugar = lugar;
+        this.estadio = estadio;
+        this.arbitro = arbitro;
+        this.estadoPartido = estadoPartido;
     }
 
     public Partido(Date fecha, String rival, String lugar, String estadio, String arbitro, boolean estadoPartido) {

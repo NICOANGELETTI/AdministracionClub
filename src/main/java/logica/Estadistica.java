@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 
 @Entity
@@ -27,6 +28,7 @@ public class Estadistica implements Serializable {
     public Estadistica() {
     }
 
+    
     public Estadistica(String goleador, String asistidor) {
         this.goleador = goleador;
         this.asistidor = asistidor;

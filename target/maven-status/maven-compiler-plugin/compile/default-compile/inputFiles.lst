@@ -4,6 +4,7 @@ C:\Users\nicoc\OneDrive\Escritorio\AdministracionClub\src\main\java\persistencia
 C:\Users\nicoc\OneDrive\Escritorio\AdministracionClub\src\main\java\logica\Jugador.java
 C:\Users\nicoc\OneDrive\Escritorio\AdministracionClub\src\main\java\persistencia\ControladoraPersistencia.java
 C:\Users\nicoc\OneDrive\Escritorio\AdministracionClub\src\main\java\persistencia\PartidoJpaController.java
+C:\Users\nicoc\OneDrive\Escritorio\AdministracionClub\src\main\java\servlet\SvUsuarios.java
 C:\Users\nicoc\OneDrive\Escritorio\AdministracionClub\src\main\java\persistencia\ResultadoJpaController.java
 C:\Users\nicoc\OneDrive\Escritorio\AdministracionClub\src\main\java\logica\Presupuesto.java
 C:\Users\nicoc\OneDrive\Escritorio\AdministracionClub\src\main\java\logica\Estadistica.java
@@ -14,4 +15,5 @@ C:\Users\nicoc\OneDrive\Escritorio\AdministracionClub\src\main\java\persistencia
 C:\Users\nicoc\OneDrive\Escritorio\AdministracionClub\src\main\java\persistencia\UsuarioJpaController.java
 C:\Users\nicoc\OneDrive\Escritorio\AdministracionClub\src\main\java\logica\ControladoraLogica.java
 C:\Users\nicoc\OneDrive\Escritorio\AdministracionClub\src\main\java\logica\Partido.java
+C:\Users\nicoc\OneDrive\Escritorio\AdministracionClub\src\main\java\servlet\SvLogin.java
 C:\Users\nicoc\OneDrive\Escritorio\AdministracionClub\src\main\java\persistencia\exceptions\NonexistentEntityException.java

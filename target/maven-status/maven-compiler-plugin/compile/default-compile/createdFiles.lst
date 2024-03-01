@@ -1,5 +1,6 @@
 logica\Resultado_.class
 logica\Usuario.class
+servlet\SvLogin.class
 persistencia\UsuarioJpaController.class
 logica\Presupuesto_.class
 logica\Estadistica.class
@@ -8,6 +9,7 @@ persistencia\exceptions\PreexistingEntityException.class
 persistencia\ResultadoJpaController.class
 persistencia\ControladoraPersistencia.class
 persistencia\exceptions\IllegalOrphanException.class
+servlet\SvUsuarios.class
 logica\Presupuesto.class
 persistencia\JugadorJpaController.class
 persistencia\PresupuestoJpaController.class

@@ -1,5 +1,3 @@
-
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="componentes/header.jsp" %>
 <body>
@@ -7,23 +5,47 @@
 
         <%@include file="componentes/sidebar.jsp" %>
 
+        <!-- Mensaje de Alerta al realizar Operacion 
+        <script>
+            // Función para mostrar el mensaje de alerta
+            function mostrarAlerta() {
+                var mensaje = '<%= session.getAttribute("mensajeAlerta") %>';
+                if (mensaje) {
+                    alert(mensaje);
+                    <% session.removeAttribute("mensajeAlerta"); %>
+                }
+            }
 
+            // Llamar a la función al cargar la página
+            window.onload = function() {
+                mostrarAlerta();
+            };
+        </script>->
 
         <!-- Page content wrapper-->
         <div id="page-content-wrapper">
             <%@include file="componentes/navbar.jsp" %>
 
-            <!-- Page content-->
-            <div class="container-fluid">
-                <h1 class="mt-4">Simple Sidebar</h1>
-                <p>The starting state of the menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will change.</p>
-                <p>
-                    Make sure to keep all page content within the
-                    <code>#page-content-wrapper</code>
-                    . The top navbar is optional, and just for demonstration. Just create an element with the
-                    <code>#sidebarToggle</code>
-                    ID which will toggle the menu when clicked.
-                </p>
+            <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-header">Bienvenido a Admin Futbol de Fútbol</div>
+
+                            <div class="card-body">
+                                <p>Esta aplicación te permite gestionar varios aspectos relacionados con la administración de un club de fútbol.</p>
+                                <p>Puedes acceder a las siguientes secciones:</p>
+                                <ul>
+                                    <li>Partidos: Gestiona los partidos programados. Carga estadísticas y resultados.</li>
+                                    <li>Jugadores: Gestiona tu plantel. Agregando y eliminando jugadores.</li>
+                                    <li>Estadísticas: Analiza y visualiza estadísticas de tus partidos. Gestiona a tus goleadores y asistidores.</li>
+                                    <li>Presupuesto: Controla y gestiona el presupuesto de compras y ventas de tus jugadores.</li>
+                                    <li>Ajustes: Carga el logo de tu club para tener una experiencia total.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -31,7 +53,5 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
     <script src="js/scripts.js"></script>
-    </body>
+</body>
 </html>
-
-

@@ -3,10 +3,9 @@
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #141e30;">
     <div class="container-fluid">
         <!-- Botón de menú -->
-        <button class="btn btn-primary" id="sidebarToggle" style="background-color: #03e9f4; border-color: #03e9f4; color: #000;">Menu</button>
-
-
-        <!-- Botón de navegación desplegable -->
+        <button class="btn btn-primary me-2" id="sidebarToggle" style="background-color: #03e9f4; border-color: #03e9f4; color: #000;">Menu</button>
+        <!-- Enlace de Inicio -->
+        <a href="index.jsp" class="btn btn-primary" style="background-color: #03e9f4; border-color: #03e9f4; color: #000; margin-right: 10px;">Inicio</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>

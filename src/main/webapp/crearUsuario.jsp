@@ -92,11 +92,8 @@
     <div class="registro-box">
         <!-- Formulario de registro -->
         <h2>Registro</h2>
-        <form action="registro.jsp" method="post">
-            <div class="user-box">
-                <input type="text" name="nombreClub" required>
-                <label>Nombre del Club</label>
-            </div>
+        <form action="SvUsuarios" method="post">
+         
             <div class="user-box">
                 <input type="text" name="responsable" required>
                 <label>Responsable</label>

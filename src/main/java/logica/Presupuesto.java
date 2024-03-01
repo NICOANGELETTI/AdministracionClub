@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 
 
@@ -27,6 +28,14 @@ public class Presupuesto implements Serializable {
     }
 
     public Presupuesto(String jugador, int monto, String tipo_transaccion, Jugador jugadorOne) {
+        this.jugador = jugador;
+        this.monto = monto;
+        this.tipo_transaccion = tipo_transaccion;
+        this.jugadorOne = jugadorOne;
+    }
+
+    public Presupuesto(int idPresupuesto, String jugador, int monto, String tipo_transaccion, Jugador jugadorOne) {
+        this.idPresupuesto = idPresupuesto;
         this.jugador = jugador;
         this.monto = monto;
         this.tipo_transaccion = tipo_transaccion;
