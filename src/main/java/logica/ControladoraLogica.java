@@ -2,6 +2,7 @@
 package logica;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import persistencia.ControladoraPersistencia;
 
@@ -66,12 +67,56 @@ public class ControladoraLogica {
     }
 
     
-    // Aca sigue
+    // Partidos
+    
+    public List<Partido> traerPartidos(){
+        return controlPersis.traerPartidos();
+    }
     
     
+    public void crearPartido(Date fecha,String rival,String lugar,String estadio , String arbitro,boolean estadoPartido){
+        Partido partido = new Partido();
+        partido.setFecha(fecha);
+        partido.setRival(rival);
+        partido.setLugar(lugar);
+        partido.setEstadio(estadio);
+        partido.setArbitro(arbitro);
+   
+        controlPersis.crearPartido(partido);
+    }
     
+    public void eliminarPartido(int idPartido){
+        controlPersis.eliminarPartido(idPartido);
+    }
     
+      public Partido traerPartido(int idPartido){
+       return  controlPersis.traerPartido(idPartido);
+    }
     
+    //Resultados
+    
+    public void crearResultado(int idResultado, String nombreEquipoL, String nombreEquipoV, int golesEquipoLocal, int golesEquipoVisitante, int tarjetasAmarillas_recibidas, int tarjetasRojas_recibidas, int tarjetasAmarillas_provocadas, int tarjetasRojas_provocadas, int penalesConvertidos, int penalesErrados, int penalesAtajados, int penalesRecibidos, Partido partido){
+        Resultado resultado = new Resultado();
+        resultado.setNombreEquipoL(nombreEquipoL);
+        resultado.setNombreEquipoV(nombreEquipoV);
+        resultado.setGolesEquipoLocal(golesEquipoLocal);
+        resultado.setGolesEquipoVisitante(golesEquipoVisitante);
+        resultado.setTarjetasAmarillas_recibidas(tarjetasAmarillas_recibidas);
+        resultado.setTarjetasRojas_recibidas(tarjetasRojas_recibidas);
+        resultado.setTarjetasAmarillas_provocadas(tarjetasAmarillas_provocadas);
+        resultado.setTarjetasRojas_provocadas(tarjetasRojas_provocadas);
+        resultado.setPenalesConvertidos(penalesConvertidos);
+        resultado.setPenalesErrados(penalesErrados);
+        resultado.setPenalesAtajados(penalesAtajados);
+        resultado.setPenalesRecibidos(penalesRecibidos);
+
+        resultado.setPartido(partido);
+        
+        controlPersis.crearResultado(resultado);
+        
+    }
+    
+  
     
     
     

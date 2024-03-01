@@ -4,13 +4,13 @@
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>logica.Estadistica</class>
     <class>logica.Jugador</class>
-    <class>logica.Partido</class>
     <class>logica.Presupuesto</class>
-    <class>logica.Resultado</class>
     <class>logica.Usuario</class>
+    <class>logica.Partido</class>
+    <class>logica.Resultado</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/admi_futbol?serverTimezone=UTC"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/administracionFutbol?serverTimezone=UTC"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
       <property name="javax.persistence.jdbc.password" value="admin"/>

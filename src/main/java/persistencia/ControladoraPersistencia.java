@@ -49,9 +49,43 @@ public class ControladoraPersistencia {
             Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    //Partidos
+    public List<Partido> traerPartidos() {
+
+        return partidoJPA.findPartidoEntities();
+    }
+
+    public void crearPartido(Partido partido) {
+
+        partidoJPA.create(partido);
+    }
+
+    public void eliminarPartido(int idPartido) {
+
+        try {
+            partidoJPA.destroy(idPartido);
+        } catch (NonexistentEntityException ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
-    
-   
+      public Partido traerPartido(int idPartido) {
+        return partidoJPA.findPartido(idPartido);
+      }
+      
+      
+      
+      //Resultados
+
+    public void crearResultado(Resultado resultado) {
+        resultadoJPA.create(resultado);
+        
+    }
+
+  
+
+
     
     
     

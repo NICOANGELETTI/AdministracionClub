@@ -24,7 +24,12 @@ public class Resultado implements Serializable {
     private int tarjetasRojas_recibidas;
     private int tarjetasAmarillas_provocadas;
     private int tarjetasRojas_provocadas;
-   
+    private int penalesConvertidos;
+    private int penalesErrados;
+    private int penalesAtajados;
+    private int penalesRecibidos;
+
+
     
      @OneToOne
     private Partido partido;
@@ -32,19 +37,7 @@ public class Resultado implements Serializable {
     public Resultado() {
     }
 
-    public Resultado(String nombreEquipoL, String nombreEquipoV, int golesEquipoLocal, int golesEquipoVisitante, int tarjetasAmarillas_recibidas, int tarjetasRojas_recibidas, int tarjetasAmarillas_provocadas, int tarjetasRojas_provocadas, Partido partido) {
-        this.nombreEquipoL = nombreEquipoL;
-        this.nombreEquipoV = nombreEquipoV;
-        this.golesEquipoLocal = golesEquipoLocal;
-        this.golesEquipoVisitante = golesEquipoVisitante;
-        this.tarjetasAmarillas_recibidas = tarjetasAmarillas_recibidas;
-        this.tarjetasRojas_recibidas = tarjetasRojas_recibidas;
-        this.tarjetasAmarillas_provocadas = tarjetasAmarillas_provocadas;
-        this.tarjetasRojas_provocadas = tarjetasRojas_provocadas;
-        this.partido = partido;
-    }
-
-    public Resultado(int idResultado, String nombreEquipoL, String nombreEquipoV, int golesEquipoLocal, int golesEquipoVisitante, int tarjetasAmarillas_recibidas, int tarjetasRojas_recibidas, int tarjetasAmarillas_provocadas, int tarjetasRojas_provocadas, Partido partido) {
+    public Resultado(int idResultado, String nombreEquipoL, String nombreEquipoV, int golesEquipoLocal, int golesEquipoVisitante, int tarjetasAmarillas_recibidas, int tarjetasRojas_recibidas, int tarjetasAmarillas_provocadas, int tarjetasRojas_provocadas, int penalesConvertidos, int penalesErrados, int penalesAtajados, int penalesRecibidos, Partido partido) {
         this.idResultado = idResultado;
         this.nombreEquipoL = nombreEquipoL;
         this.nombreEquipoV = nombreEquipoV;
@@ -54,8 +47,66 @@ public class Resultado implements Serializable {
         this.tarjetasRojas_recibidas = tarjetasRojas_recibidas;
         this.tarjetasAmarillas_provocadas = tarjetasAmarillas_provocadas;
         this.tarjetasRojas_provocadas = tarjetasRojas_provocadas;
+        this.penalesConvertidos = penalesConvertidos;
+        this.penalesErrados = penalesErrados;
+        this.penalesAtajados = penalesAtajados;
+        this.penalesRecibidos = penalesRecibidos;
         this.partido = partido;
     }
+
+    public Resultado(String nombreEquipoL, String nombreEquipoV, int golesEquipoLocal, int golesEquipoVisitante, int tarjetasAmarillas_recibidas, int tarjetasRojas_recibidas, int tarjetasAmarillas_provocadas, int tarjetasRojas_provocadas, int penalesConvertidos, int penalesErrados, int penalesAtajados, int penalesRecibidos, Partido partido) {
+        this.nombreEquipoL = nombreEquipoL;
+        this.nombreEquipoV = nombreEquipoV;
+        this.golesEquipoLocal = golesEquipoLocal;
+        this.golesEquipoVisitante = golesEquipoVisitante;
+        this.tarjetasAmarillas_recibidas = tarjetasAmarillas_recibidas;
+        this.tarjetasRojas_recibidas = tarjetasRojas_recibidas;
+        this.tarjetasAmarillas_provocadas = tarjetasAmarillas_provocadas;
+        this.tarjetasRojas_provocadas = tarjetasRojas_provocadas;
+        this.penalesConvertidos = penalesConvertidos;
+        this.penalesErrados = penalesErrados;
+        this.penalesAtajados = penalesAtajados;
+        this.penalesRecibidos = penalesRecibidos;
+        this.partido = partido;
+    }
+
+    
+    
+    public int getPenalesConvertidos() {
+        return penalesConvertidos;
+    }
+
+    public void setPenalesConvertidos(int penalesConvertidos) {
+        this.penalesConvertidos = penalesConvertidos;
+    }
+
+    public int getPenalesErrados() {
+        return penalesErrados;
+    }
+
+    public void setPenalesErrados(int penalesErrados) {
+        this.penalesErrados = penalesErrados;
+    }
+
+    public int getPenalesAtajados() {
+        return penalesAtajados;
+    }
+
+    public void setPenalesAtajados(int penalesAtajados) {
+        this.penalesAtajados = penalesAtajados;
+    }
+
+    public int getPenalesRecibidos() {
+        return penalesRecibidos;
+    }
+
+    public void setPenalesRecibidos(int penalesRecibidos) {
+        this.penalesRecibidos = penalesRecibidos;
+    }
+
+   
+
+    
 
     public Partido getPartido() {
         return partido;

@@ -1,4 +1,5 @@
 C:\Users\nicoc\OneDrive\Escritorio\AdministracionClub\src\main\java\logica\Resultado.java
+C:\Users\nicoc\OneDrive\Escritorio\AdministracionClub\src\main\java\servlet\SvPartidos.java
 C:\Users\nicoc\OneDrive\Escritorio\AdministracionClub\src\main\java\persistencia\EstadisticaJpaController.java
 C:\Users\nicoc\OneDrive\Escritorio\AdministracionClub\src\main\java\persistencia\exceptions\PreexistingEntityException.java
 C:\Users\nicoc\OneDrive\Escritorio\AdministracionClub\src\main\java\logica\Jugador.java
@@ -13,7 +14,9 @@ C:\Users\nicoc\OneDrive\Escritorio\AdministracionClub\src\main\java\logica\Usuar
 C:\Users\nicoc\OneDrive\Escritorio\AdministracionClub\src\main\java\persistencia\JugadorJpaController.java
 C:\Users\nicoc\OneDrive\Escritorio\AdministracionClub\src\main\java\persistencia\exceptions\IllegalOrphanException.java
 C:\Users\nicoc\OneDrive\Escritorio\AdministracionClub\src\main\java\persistencia\UsuarioJpaController.java
+C:\Users\nicoc\OneDrive\Escritorio\AdministracionClub\src\main\java\servlet\SvElimPartidos.java
 C:\Users\nicoc\OneDrive\Escritorio\AdministracionClub\src\main\java\logica\ControladoraLogica.java
 C:\Users\nicoc\OneDrive\Escritorio\AdministracionClub\src\main\java\logica\Partido.java
 C:\Users\nicoc\OneDrive\Escritorio\AdministracionClub\src\main\java\servlet\SvLogin.java
 C:\Users\nicoc\OneDrive\Escritorio\AdministracionClub\src\main\java\persistencia\exceptions\NonexistentEntityException.java
+C:\Users\nicoc\OneDrive\Escritorio\AdministracionClub\src\main\java\servlet\SvResultados.java
