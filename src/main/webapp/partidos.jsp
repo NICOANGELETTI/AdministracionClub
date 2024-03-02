@@ -14,7 +14,7 @@
             <!-- Page content-->
             <div class="container-fluid">
                 <h1 class="mt-4">Lista de Partidos Programados</h1>
-                
+            
                 <!-- Botón para cargar próximo partido -->
                 <button type="button" class="btn" style="width: 20%; padding: 10px 20px; font-size: 16px; background: #03e9f4; border: none; outline: none; border-radius: 5px; cursor: pointer; transition: background 0.3s ease; color: #000;" data-bs-toggle="modal" data-bs-target="#cargarProximoPartidoModal">Cargar Partido Próximo</button>
                 
@@ -28,32 +28,55 @@
                                 <th>Estadio</th>
                                 <th>Árbitro</th>
                                 <th>Acciones</th>
-                                <th>Estado</th>
+                                <th>Estado Resultado</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <%  
-                                List<Partido> listaPartidos = (List)request.getSession().getAttribute("listaPartidos");  
-                                if(listaPartidos != null && !listaPartidos.isEmpty()) {
-                                    for(Partido partido : listaPartidos){
+                            <%
+                                List<Partido> listaPartidos = (List) request.getSession().getAttribute("listaPartidos");
+                                if (listaPartidos != null && !listaPartidos.isEmpty()) {
+                                    for (Partido partido : listaPartidos) {
                             %>
                             <tr>
                                 <td style="color: #fff;"><%=  partido.getFecha()%></td>
-                                <td style="color: #fff;"><%=  partido.getRival()  %></td>
-                                <td style="color: #fff;"><%=  partido.getLugar()   %></td>
-                                <td style="color: #fff;"><%=  partido.getEstadio() %></td>
-                                <td style="color: #fff;"><%=  partido.getArbitro() %></td>
+                                <td style="color: #fff;"><%=  partido.getRival()%></td>
+                                <td style="color: #fff;"><%=  partido.getLugar()%></td>
+                                <td style="color: #fff;"><%=  partido.getEstadio()%></td>
+                                <td style="color: #fff;"><%=  partido.getArbitro()%></td>
                                 <td style="color: #fff;">
                                     <form action="SvElimPartidos" method="POST">
+                                        <% if (!partido.isEstadoPartido()) { %>
                                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#cargarResultadoModal" style="background-color: #03e9f4; border-color: #03e9f4; color: black;">Cargar Resultado</button>
+                                        <% } else { %>
+                                        <button type="button" class="btn btn-primary" disabled>Cargar Resultado</button>
+                                        <% }%>
                                         <button type="submit" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#eliminarPartidoModal" style="background-color: #FF0000; border-color: #FF0000; color: black;">Eliminar</button>
-                                        <input type="hidden" name="id" value="<%= partido.getIdPartido() %>">
+                                        <input type="hidden" name="id" value="<%= partido.getIdPartido()%>">
                                     </form>
+
                                 </td>
-                                <td style="color: #fff;"><%= partido.isEstadoPartido()  %></td>
+                                <td style="color: #fff;">
+                                    
+                                    
+                                    
+                                    <% 
+                                   String textoEstado;
+
+                                 if(partido.isEstadoPartido()==true){
+                                        textoEstado = "Cargado";
+                                        }else{
+                                        textoEstado = "No Cargado";
+                                        }
+                                    
+                                    %>
+                                    
+                                    <%= textoEstado %>
+                                
+                                
+                                </td>
                             </tr>
-                            <% 
-                                    }
+                            <%
+                                }
                                 } else {
                                     // Si no hay partidos programados, puedes mostrar un mensaje o realizar alguna acción adicional
                                     out.println("<tr><td colspan='7' style='color: #fff;'>No hay partidos programados</td></tr>");

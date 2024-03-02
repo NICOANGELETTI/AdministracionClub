@@ -50,7 +50,7 @@ public class SvPartidos extends HttpServlet {
         
         response.sendRedirect("partidos.jsp");
         
-        
+         
         
     }
 

@@ -82,6 +82,64 @@ public class ControladoraPersistencia {
         resultadoJPA.create(resultado);
         
     }
+   
+
+    public void actualizarEstado(int idPartido, boolean estadoNuevo) {
+    // Obtener el partido de la base de datos
+    Partido partido = partidoJPA.findPartido(idPartido);
+    
+    // Verificar si el partido existe
+    if (partido != null) {
+        // Actualizar el estado del partido
+        partido.setEstadoPartido(estadoNuevo);
+        
+        try {
+            // Actualizar el partido en la base de datos
+            partidoJPA.edit(partido);
+        } catch (Exception ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    } else {
+        // Manejo de error si el partido no existe
+        System.out.println("No se encontró el partido con el ID: " + idPartido);
+    }
+}
+
+    
+    //Jugadores
+    public void crearJugador(Jugador jugador) {
+        
+        jugadorJPA.create(jugador);
+        
+    }
+
+    public List<Jugador> traerJugadores() {
+
+        return jugadorJPA.findJugadorEntities();
+    }
+
+    public Jugador traerJugador(int idJugador) {
+
+        return jugadorJPA.findJugador(idJugador);
+    }
+
+    public void eliminarJugador(int idJugador) {
+        try {
+            jugadorJPA.destroy(idJugador);
+        } catch (NonexistentEntityException ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void editarJugador(Jugador jugador) {
+
+        try {
+            jugadorJPA.edit(jugador);
+        } catch (Exception ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
 
   
 

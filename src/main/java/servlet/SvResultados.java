@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import logica.ControladoraLogica;
 import logica.Partido;
 
@@ -56,9 +57,13 @@ public class SvResultados extends HttpServlet {
        int idPartido = Integer.parseInt(request.getParameter("idPartidoResultado"));
        
       Partido partido = control.traerPartido(idPartido);
-       
-      control.crearResultado(idPartido, equipoLocal, equipoLocal, golesEqLocal, golesEqVisit, tarjetasAmarillasEqVisit, tarjetasRojasEqVisit, tarjetasAmarillasEqLocal, tarjetasRojasEqLocal, penalesConvertidos, penalesErrados, penalesAtajados, penalesRecibidos, partido);
-       partido.setEstadoPartido(true);
+      
+    //Creo Resultado
+      control.crearResultado(idPartido, equipoLocal, equipoVisitante, golesEqLocal, golesEqVisit, tarjetasAmarillasEqVisit, tarjetasRojasEqVisit, tarjetasAmarillasEqLocal, tarjetasRojasEqLocal, penalesConvertidos, penalesErrados, penalesAtajados, penalesRecibidos, partido);
+        // Actualizar el estado del partido en la base de datos
+    control.actualizarEstado(idPartido, true);
+    request.getSession().setAttribute("resultadoCargado", true);
+
        
        response.sendRedirect("SvPartidos");
        

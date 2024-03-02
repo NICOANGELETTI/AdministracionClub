@@ -35,6 +35,7 @@ public class PartidoJpaController implements Serializable {
         emf = Persistence.createEntityManagerFactory("AdministracionClub_PU");
         
     }
+    
     public void create(Partido partido) {
         EntityManager em = null;
         try {

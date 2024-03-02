@@ -39,6 +39,14 @@ public class Jugador implements Serializable {
        
     }
 
+    public Jugador(String nombre, Date fecha_nac, String nacionalidad, String posicion, String estado) {
+        this.nombre = nombre;
+        this.fecha_nac = fecha_nac;
+        this.nacionalidad = nacionalidad;
+        this.posicion = posicion;
+        this.estado = estado;
+    }
+
     
  
     

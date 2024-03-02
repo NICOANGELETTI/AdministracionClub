@@ -93,6 +93,18 @@ public class ControladoraLogica {
        return  controlPersis.traerPartido(idPartido);
     }
     
+      
+      
+      public void actualizarEstado(int idPartido , boolean estadoNuevo){
+        Partido partido = controlPersis.traerPartido(idPartido);
+        partido.setEstadoPartido(estadoNuevo);
+        controlPersis.actualizarEstado(idPartido , estadoNuevo);
+        
+        
+        
+        
+        
+    }
     //Resultados
     
     public void crearResultado(int idResultado, String nombreEquipoL, String nombreEquipoV, int golesEquipoLocal, int golesEquipoVisitante, int tarjetasAmarillas_recibidas, int tarjetasRojas_recibidas, int tarjetasAmarillas_provocadas, int tarjetasRojas_provocadas, int penalesConvertidos, int penalesErrados, int penalesAtajados, int penalesRecibidos, Partido partido){
@@ -116,11 +128,38 @@ public class ControladoraLogica {
         
     }
     
-  
+  //Jugadores
+    
+    public void crearJugador(String nombre, Date fecha_nac, String nacionalidad, String posicion, String estado){
+        Jugador jugador = new Jugador();
+        jugador.setNombre(nombre);
+        jugador.setFecha_nac(fecha_nac);
+        jugador.setNacionalidad(nacionalidad);
+        jugador.setPosicion(posicion);
+        jugador.setEstado(estado);
+        controlPersis.crearJugador(jugador);
+        
+        
+    }
     
     
     
+    public List<Jugador> traerJugadores(){
+    return   controlPersis.traerJugadores();
+    }
+    
+    public Jugador traerJugador(int idJugador){
+        return controlPersis.traerJugador(idJugador);  
+        
+    }
+    
+    public void eliminarJugador(int idJugador){
+        controlPersis.eliminarJugador(idJugador);
+    }
     
     
-    
-}
+   public void editarJugador(Jugador jugador) {
+
+        controlPersis.editarJugador(jugador);
+
+    }}
