@@ -162,4 +162,54 @@ public class ControladoraLogica {
 
         controlPersis.editarJugador(jugador);
 
-    }}
+    }
+
+
+//Goleador
+   
+   
+   public void crearGoleador(int goles, String nombre, Date fecha_nac, String nacionalidad, String posicion, String estado){
+       
+       Goleador goleador = new Goleador();
+       goleador.setNombre(nombre);
+       goleador.setGoles(goles);
+       goleador.setFecha_nac(fecha_nac);
+       goleador.setNacionalidad(nacionalidad);
+       goleador.setPosicion(posicion);
+       goleador.setEstado(estado);
+       
+       controlPersis.crearGoleador(goleador);
+       
+       
+       
+   }
+   
+   public List<Goleador> traerGoleadores(){
+       
+       return controlPersis.traerGoleadores();
+       
+       
+   }
+   
+   
+   public void crearAsistidor(int asistencias, String nombre, Date fecha_nac, String nacionalidad, String posicion, String estado) {
+
+        Asistidor asistidor = new Asistidor();
+        asistidor.setAsistencias(asistencias);
+        asistidor.setNombre(nombre);
+        asistidor.setFecha_nac(fecha_nac);
+        asistidor.setNacionalidad(nacionalidad);
+        asistidor.setPosicion(posicion);
+        asistidor.setEstado(estado);
+
+        controlPersis.crearAsistidor(asistidor);
+   
+   
+   }
+   
+   
+   public List<Asistidor> traerAsistidores(){
+    return controlPersis.traerAsistidores();
+    
+}
+}

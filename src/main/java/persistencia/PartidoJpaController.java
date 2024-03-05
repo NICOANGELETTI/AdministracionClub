@@ -32,7 +32,7 @@ public class PartidoJpaController implements Serializable {
     }
 
     public PartidoJpaController(){
-        emf = Persistence.createEntityManagerFactory("AdministracionClub_PU");
+        emf = Persistence.createEntityManagerFactory("adminClub_PU");
         
     }
     

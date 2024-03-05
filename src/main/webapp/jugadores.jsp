@@ -22,7 +22,7 @@
                         <thead>
                             <tr>
                                 <th>Nombre</th>
-                                <th>Fecha de Nacimiento</th>
+                           
                                 <th>Nacionalidad</th>
                                 <th>Posición</th>
                                 <th>Estado</th>
@@ -38,7 +38,7 @@
                             %>
                             <tr>
                                 <td style="color: #fff;"><%=  jugador.getNombre()%></td>
-                                <td style="color: #fff;"><%=  jugador.getFecha_nac()%></td>
+                               
                                 <td style="color: #fff;"><%=  jugador.getNacionalidad()%></td>
                                 <td  style="color: #fff;">
                                     <%= jugador.getPosicion()%>

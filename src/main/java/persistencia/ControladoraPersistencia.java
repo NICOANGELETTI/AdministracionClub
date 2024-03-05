@@ -10,12 +10,13 @@ import persistencia.exceptions.NonexistentEntityException;
 
 public class ControladoraPersistencia {
 
-    EstadisticaJpaController estadisticaJPA = new EstadisticaJpaController();
     JugadorJpaController jugadorJPA = new JugadorJpaController();
     PartidoJpaController partidoJPA = new PartidoJpaController();
     PresupuestoJpaController presupuestoJPA = new PresupuestoJpaController();
     ResultadoJpaController resultadoJPA = new ResultadoJpaController();
     UsuarioJpaController usuarioJPA = new UsuarioJpaController();
+    GoleadorJpaController goleadorJPA = new GoleadorJpaController();
+    AsistidorJpaController asistidorJPA = new AsistidorJpaController();
 
     public ControladoraPersistencia() {
     }
@@ -138,6 +139,32 @@ public class ControladoraPersistencia {
         } catch (Exception ex) {
             Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    
+        //Goleadores
+    public void crearGoleador(Goleador goleador) {
+        
+        goleadorJPA.create(goleador);
+
+    }
+
+    public void crearAsistidor(Asistidor asistidor) {
+
+        asistidorJPA.create(asistidor);
+        
+    }
+
+    public List<Goleador> traerGoleadores() {
+
+
+        return goleadorJPA.findGoleadorEntities();
+    }
+
+    public List<Asistidor> traerAsistidores() {
+
+        return asistidorJPA.findAsistidorEntities();
+        
     }
 
 

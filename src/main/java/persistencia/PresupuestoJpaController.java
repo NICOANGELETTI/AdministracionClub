@@ -31,7 +31,7 @@ public class PresupuestoJpaController implements Serializable {
         return emf.createEntityManager();
     }
 public PresupuestoJpaController(){
-        emf = Persistence.createEntityManagerFactory("AdministracionClub_PU");
+        emf = Persistence.createEntityManagerFactory("adminClub_PU");
         
     }
     public void create(Presupuesto presupuesto) {
