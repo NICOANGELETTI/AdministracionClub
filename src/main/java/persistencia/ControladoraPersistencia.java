@@ -149,17 +149,48 @@ public class ControladoraPersistencia {
 
     }
 
+       public void eliminarGoleador(int idGoleador) {
+        try {
+            goleadorJPA.destroy(idGoleador);
+        } catch (NonexistentEntityException ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+   public List<Goleador> traerGoleadores() {
+
+
+        return goleadorJPA.findGoleadorEntities();
+    }
+  
+
+   
+    public Goleador traerGoleador(int idGoleador) {
+        return  goleadorJPA.findGoleador(idGoleador);
+    }
+   
+
+       public void editarGoleador(Goleador goleador) {
+        try {
+            goleadorJPA.edit(goleador);
+        } catch (Exception ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       }
+
+    
+    
+    //Asistidores
+    
+    
     public void crearAsistidor(Asistidor asistidor) {
 
         asistidorJPA.create(asistidor);
         
     }
 
-    public List<Goleador> traerGoleadores() {
-
-
-        return goleadorJPA.findGoleadorEntities();
-    }
+ 
 
     public List<Asistidor> traerAsistidores() {
 
@@ -167,10 +198,20 @@ public class ControladoraPersistencia {
         
     }
 
+    public void eliminarAsistidor(int idAsistidor) {
+        
+        try {
+            asistidorJPA.destroy(idAsistidor);
+        } catch (NonexistentEntityException ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
-  
+        }
 
+ 
+   
 
+ 
     
     
     

@@ -35,26 +35,33 @@
 
 
                             <%   List<Goleador> listaGoleadores = (List) request.getSession().getAttribute("listaGoleadores");
-                                
-                                for(Goleador goleador : listaGoleadores){
-                                
-                                
-                             
+
+                                for (Goleador goleador : listaGoleadores) {
+
+
+                            %><tr>
+                                <td style="color: white;"><%= goleador.getNombre()%></td>
+                                <td style="color: white;"><%= goleador.getPosicion()%></td>
+                                <td style="color: white;"><%= goleador.getGoles()%></td>
+                                <td class="text-center"><!-- Añadimos la clase text-center -->
+                                    <form action="SvElimGoleador" method="post" style="display: inline-block;">
+                                        <input type="hidden" name="idGoleador" value="<%= goleador.getIdJugador()%>">   
+                                        <button type="submit" class="btn btn-danger" style="background-color: #ff0000; border-color: #ff0000; color: black;">Eliminar</button>
+                                    </form>
+
+
+                                   
+                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalEditarGoleador" style="background-color: #03e9f4; border-color: #03e9f4; color: black;">
+                                                Editar Cant. Goles
+                                            </button>                  
+                                            <input type="hidden" name="idEdit" value="<%= goleador.getIdJugador()%>">   
                                
-                            
-                            %>
-                                <tr>
-                                    <td style="color: white;"><%= goleador.getNombre()  %></td>
-                                    <td style="color: white;"> <%= goleador.getPosicion()  %> </td>
-                                    <td style="color: white;"><%= goleador.getGoles()  %></td>
-                                    <td class="text-center"><!-- Añadimos la clase text-center -->
-                                        <button type="button" class="btn btn-primary" style="background-color: #03e9f4; border-color: #03e9f4; color: black;">Editar</button>
-                                        <button type="button" class="btn btn-danger" style="background-color: #ff0000; border-color: #ff0000; color: black;">Eliminar</button>
-                                    </td>
-                                </tr>
-                          
-   <% }%>
-    
+
+                                </td>
+                            </tr>
+
+                            <% }%>
+
                     </table>
                 </div>
                 <!-- Botón para agregar goleador -->
@@ -87,30 +94,30 @@
 
                                 <!-- Formulario para agregar goleador -->
 
-                                <%    // Llamar a los servlets para obtener las listas de odontólogos y pacientes
+                                <%    // Llamar a los servlets para obtener las listas de jugadores
                                     request.getRequestDispatcher("SvJugadores").include(request, response);
 
-                                %>
+                                %> 
 
                                 <form action="SvGoleador" method="POST">
                                     <label for="idJugador" class="form-label">Nombre del Goleador:</label>
                                     <select name="idJugador" class="form-select" id="idJugador" style="color: #000; background-color: #fff;">
                                         <%            List<Jugador> listaJugadores = (List) request.getSession().getAttribute("listaJugadores");
                                             if (listaJugadores != null && !listaJugadores.isEmpty()) {
-                                                for (Jugador jugador : listaJugadores) {
+                                                    for (Jugador jugador : listaJugadores) {
                                         %>
-                                              <option value="<%= jugador.getIdJugador() %>"><%= jugador.getNombre() %></option>
+                                        <option value="<%= jugador.getIdJugador()%>"><%= jugador.getNombre()%></option>
 
                                         <%
                                                 }
                                             }
                                         %>
                                     </select>
-                                            <div class="mb-3">
-                                                    <label for="golesAnotados" class="form-label">Goles</label>
-                                    <input type="int" name="golesAnotados" class="form-control" id="golesAnotados" style="color: #000; background-color: #fff;">
-                                </div>
-                                <button type="submit" class="btn btn-primary" style="background-color: #03e9f4; border-color: #03e9f4;">Agregar Goleador</button>
+                                    <div class="mb-3">
+                                        <label for="golesAnotados" class="form-label">Goles</label>
+                                        <input type="int" name="golesAnotados" class="form-control" id="golesAnotados" style="color: #000; background-color: #fff;">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary" style="background-color: #03e9f4; border-color: #03e9f4;">Agregar Goleador</button>
                                 </form>
                             </div>
                         </div>
@@ -119,16 +126,52 @@
 
 
 
+
+             
+
+                            <%   listaGoleadores = (List<Goleador>) request.getSession().getAttribute("listaGoleadores");
+                                
+                             
+                                
+                                for (Goleador goleador : listaGoleadores) {
+
+
+                            %>
+                <!-- Modal Editar Goleador -->
+                <div class="modal fade" id="modalEditarGoleador" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content" style="background-color: #141e30; color: #fff;">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Editar Goles</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+
+   
+                            <form action="SvEditGoleador" method="POST">
+                         <input type="hidden" name="idEdit" value="">   
+                                <div class="modal-body">
+                                    <!-- Aquí puedes colocar los campos de edición, como nombre, posición y cantidad de goles -->
+                                    <input name="golesGoleador" type="number" id="golesGoleador" class="form-control" placeholder="Cantidad de goles" style="color: #000; background-color: #fff;"   value="">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="background-color: #6c757d; border-color: #6c757d; color: #000;">Cerrar</button>
+                                    <button type="submit" class="btn btn-primary" style="background-color: #03e9f4; border-color: #03e9f4; color: #000;">Guardar cambios</button>
                                     
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
+                                </div>
+                            </form>
+                            
+                         
+                        </div>
+                    </div>
+                </div>
+                                <%}%>
+
+
+
+
+
+
+
               <!-- Tabla de asistidores -->
 <h2 style="color: white;">Asistidores</h2>
 <div class="table-responsive">
@@ -147,7 +190,7 @@
         
         
         
-        
+        <!--Aca esta el problema de la lista que no trae al refrescar la pagina-->
   <tbody>
     <% List<Asistidor> asistidoresList = (List<Asistidor>) request.getSession().getAttribute("listaDeAsistidores");
     if (asistidoresList != null && !asistidoresList.isEmpty()) {
@@ -158,11 +201,19 @@
                 <td style="color: white;"><%= asistidor.getAsistencias() %></td>
                 <td class="text-center"><!-- Añadimos la clase text-center -->
                     <button type="button" class="btn btn-primary" style="background-color: #03e9f4; border-color: #03e9f4; color: black;">Editar</button>
-                    <button type="button" class="btn btn-danger" style="background-color: #ff0000; border-color: #ff0000; color: black;">Eliminar</button>
+
+
+                    <form action="SvElimAsistidor" method="post" style="display: inline-block;">
+                        <button type="submit" class="btn btn-danger" style="background-color: #ff0000; border-color: #ff0000; color: black;">Eliminar</button>
+                         <input type="hidden" name="idAsistidor" value="<%= asistidor.getIdJugador()%>">   
+
+                    
+                    </form>
+
                 </td>
             </tr>
-        <% }
-    } else { %>
+            <% }
+        } else { %>
         <tr>
             <td colspan="4" style="color: white; text-align: center;">No hay asistidores disponibles.</td>
         </tr>
@@ -229,123 +280,114 @@
                         </div>
                     </div>
                 </div>
-                <!-- Tabla de tarjetas -->
-                <div class="row">
-                    <div class="col-md-6">
-                        <h2 style="color: white;">Tarjetas Provocadas</h2>
-                        <div class="table-responsive">
-                            <table class="table table-striped" style="color: #fff;">
-                                <thead>
-                                    <tr>
-                                        <th style="color: white;"></th>
-                                        <th style="color: white;">Amarillas</th>
-                                        <th style="color: white;">Rojas</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td style="color: white;">Equipo 1</td>
-                                        <td style="color: white;">5</td>
-                                        <td style="color: white;">1</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="color: white;">Equipo 2</td>
-                                        <td style="color: white;">3</td>
-                                        <td style="color: white;">2</td>
-                                    </tr>
-                                    <!-- Agrega más filas según sea necesario -->
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <h2 style="color: white;">Tarjetas Recibidas</h2>
-                        <div class="table-responsive">
-                            <table class="table table-striped" style="color: #fff;">
-                                <thead>
-                                    <tr>
-                                        <th style="color: white;"></th>
-                                        <th style="color: white;">Amarillas</th>
-                                        <th style="color: white;">Rojas</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td style="color: white;">Jugador 1</td>
-                                        <td style="color: white;">2</td>
-                                        <td style="color: white;">0</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="color: white;">Jugador 2</td>
-                                        <td style="color: white;">1</td>
-                                        <td style="color: white;">1</td>
-                                    </tr>
-                                    <!-- Agrega más filas según sea necesario -->
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <!-- Fin de la tabla de tarjetas -->
+               <div class="container-fluid">
+    <!-- Tabla de tarjetas -->
+    <div class="row">
+        <div class="col-md-6">
+            <h2 style="color: white;">Tarjetas Provocadas</h2>
+            <div class="table-responsive">
+                <table class="table table-striped" style="color: #fff;">
+                    <thead>
+                        <tr>
+                            <th style="color: white;">Amarillas</th>
+                            <th style="color: white;">Rojas</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="color: white;">5</td>
+                            <td style="color: white;">1</td>
+                        </tr>
+                        <tr>
+                            <td style="color: white;">3</td>
+                            <td style="color: white;">2</td>
+                        </tr>
+                        <!-- Agrega más filas según sea necesario -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h2 style="color: white;">Tarjetas Recibidas</h2>
+            <div class="table-responsive">
+                <table class="table table-striped" style="color: #fff;">
+                    <thead>
+                        <tr>
+                            <th style="color: white;">Amarillas</th>
+                            <th style="color: white;">Rojas</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="color: white;">2</td>
+                            <td style="color: white;">0</td>
+                        </tr>
+                        <tr>
+                            <td style="color: white;">1</td>
+                            <td style="color: white;">1</td>
+                        </tr>
+                        <!-- Agrega más filas según sea necesario -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- Fin de la tabla de tarjetas -->
 
-                <!-- Tabla de penales -->
-                <div class="row">
-                    <div class="col-md-6">
-                        <h2 style="color: white;">Penales a Favor</h2>
-                        <div class="table-responsive">
-                            <table class="table table-striped" style="color: #fff;">
-                                <thead>
-                                    <tr>
-                                        <th style="color: white;"></th>
-                                        <th style="color: white;">Penales Convertidos</th>
-                                        <th style="color: white;">Penales Errados</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td style="color: white;">Equipo 1</td>
-                                        <td style="color: white;">5</td>
-                                        <td style="color: white;">1</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="color: white;">Equipo 2</td>
-                                        <td style="color: white;">3</td>
-                                        <td style="color: white;">2</td>
-                                    </tr>
-                                    <!-- Agrega más filas según sea necesario -->
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <h2 style="color: white;">Penales en Contra</h2>
-                        <div class="table-responsive">
-                            <table class="table table-striped" style="color: #fff;">
-                                <thead>
-                                    <tr>
-                                        <th style="color: white;"></th>
-                                        <th style="color: white;">Penales Recibidos</th>
-                                        <th style="color: white;">Penales Atajados</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td style="color: white;">Equipo 1</td>
-                                        <td style="color: white;">3</td>
-                                        <td style="color: white;">1</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="color: white;">Equipo 2</td>
-                                        <td style="color: white;">2</td>
-                                        <td style="color: white;">0</td>
-                                    </tr>
-                                    <!-- Agrega más filas según sea necesario -->
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <!-- Fin de la tabla de penales -->
+    <!-- Tabla de penales -->
+    <div class="row">
+        <div class="col-md-6">
+            <h2 style="color: white;">Penales a Favor</h2>
+            <div class="table-responsive">
+                <table class="table table-striped" style="color: #fff;">
+                    <thead>
+                        <tr>
+                            <th style="color: white;">Penales Convertidos</th>
+                            <th style="color: white;">Penales Errados</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="color: white;">5</td>
+                            <td style="color: white;">1</td>
+                        </tr>
+                        <tr>
+                            <td style="color: white;">3</td>
+                            <td style="color: white;">2</td>
+                        </tr>
+                        <!-- Agrega más filas según sea necesario -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h2 style="color: white;">Penales en Contra</h2>
+            <div class="table-responsive">
+                <table class="table table-striped" style="color: #fff;">
+                    <thead>
+                        <tr>
+                            <th style="color: white;">Penales Recibidos</th>
+                            <th style="color: white;">Penales Atajados</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="color: white;">3</td>
+                            <td style="color: white;">1</td>
+                        </tr>
+                        <tr>
+                            <td style="color: white;">2</td>
+                            <td style="color: white;">0</td>
+                        </tr>
+                        <!-- Agrega más filas según sea necesario -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- Fin de la tabla de penales -->
+</div>
+
 
                 <!-- Tabla de posesión promedio -->
                 <div class="row justify-content-center">

@@ -2,6 +2,7 @@
 package logica;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -215,9 +216,88 @@ public class Resultado implements Serializable {
 
 
      
+    //Metodos para Interfaz Estadistica
+    
+    
+      public int getTotalGolesRecibidos(List<Resultado> resultados) {
+        int totalGolesRecibidos = 0;
+        for (Resultado resultado : resultados) {
+            totalGolesRecibidos += resultado.getGolesEquipoVisitante();
+        }
+        return totalGolesRecibidos;
+    }
      
      
+      
+         public int getTotalGolesRealizados(List<Resultado> resultados) {
+        int totalGolesRealizados = 0;
+        for (Resultado resultado : resultados) {
+            totalGolesRealizados += resultado.getGolesEquipoLocal();
+        }
+        return totalGolesRealizados;
+    }
+         
+         
+         
+         
+    public int getTotalTarjetasAmarillasRecibidas(List<Resultado> resultados) {
+        int totalTarjetasAmarillasRecibidas = 0;
+        for (Resultado resultado : resultados) {
+            totalTarjetasAmarillasRecibidas += resultado.getTarjetasAmarillas_recibidas() ;
+        }
+        return totalTarjetasAmarillasRecibidas;
+    }
+
+    public int getTotalTarjetasRojasRecibidas(List<Resultado> resultados) {
+        int totalTarjetasRojasRecibidas = 0;
+        for (Resultado resultado : resultados) {
+            totalTarjetasRojasRecibidas += resultado.getTarjetasRojas_recibidas();
+       
+    } return totalTarjetasRojasRecibidas;
+    }
+    
+    public int getTotalTarjetasAmarillasProvocadas(List<Resultado> resultados){
+        int totalTarjetasAmarillasProvocadas = 0; 
+        
+        for(Resultado resultado : resultados){
+            totalTarjetasAmarillasProvocadas += resultado.getTarjetasAmarillas_provocadas();
+            
+            
+        }
+        return totalTarjetasAmarillasProvocadas; 
+        
+    }
+    
+       
+    
+    public int getTotalTarjetasRojasProvocadas(List<Resultado> resultados){
+        int totalTarjetasRojasProvocadas = 0; 
+        for(Resultado resultado : resultados){
+            totalTarjetasRojasProvocadas += resultado.getTarjetasRojas_provocadas();
+            
+            
+        }
+        
+        return totalTarjetasRojasProvocadas; 
+  
+    }
+    
+    
+ public int getTotalPenalesConvertidos(List<Resultado> resultados){
+     int totalPenalesConvertidos = 0 ;
+     for(Resultado resultado : resultados){
+         totalPenalesConvertidos += resultado.getTotalPenalesConvertidos(resultados);
+       
+     } return totalPenalesConvertidos; 
      
      
+ }
+    
+    
     
 }
+      
+
+     
+     
+

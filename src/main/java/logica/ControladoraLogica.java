@@ -192,6 +192,30 @@ public class ControladoraLogica {
    }
    
    
+   
+   public void eliminarGoleador(int idGoleador){
+       controlPersis.eliminarGoleador(idGoleador);
+       
+       
+       
+   }
+   
+   public Goleador traerGoleador(int idGoleador){
+       
+       return controlPersis.traerGoleador(idGoleador);
+       
+   }
+   
+      public void editarGoleador(Goleador goleador) {
+
+        controlPersis.editarGoleador(goleador);
+
+    }
+   
+       
+   
+   //Asistidores
+   
    public void crearAsistidor(int asistencias, String nombre, Date fecha_nac, String nacionalidad, String posicion, String estado) {
 
         Asistidor asistidor = new Asistidor();
@@ -212,4 +236,10 @@ public class ControladoraLogica {
     return controlPersis.traerAsistidores();
     
 }
+   
+   
+   public void eliminarAsistidor(int idAsistidor){
+       controlPersis.eliminarAsistidor(idAsistidor);
+   }
+   
 }

@@ -129,6 +129,7 @@
 
                           
                                 for(Jugador juga : listaJugadores){
+                                
                             %>
 
     <!-- Modal para editar jugador -->
