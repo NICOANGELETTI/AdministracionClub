@@ -208,6 +208,34 @@ public class ControladoraPersistencia {
 
         }
 
+    
+    //Presupuesto
+    public void crearPresupuesto(Presupuesto presupuesto) {
+
+        presupuestoJPA.create(presupuesto);
+
+    }
+
+    public void eliminarPresupuesto(int idPresupuesto) {
+        try {
+            presupuestoJPA.destroy(idPresupuesto);
+        } catch (NonexistentEntityException ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    
+    
+    public List<Presupuesto> traerPresupuestos() {
+        
+        return presupuestoJPA.findPresupuestoEntities();
+       
+    }
+
+    
+    
+    
+
  
    
 

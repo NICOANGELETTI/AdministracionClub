@@ -27,6 +27,12 @@ public class Presupuesto implements Serializable {
     public Presupuesto() {
     }
 
+    public Presupuesto(int monto, String tipo_transaccion, Jugador jugadorOne) {
+        this.monto = monto;
+        this.tipo_transaccion = tipo_transaccion;
+        this.jugadorOne = jugadorOne;
+    }
+
     public Presupuesto(String jugador, int monto, String tipo_transaccion, Jugador jugadorOne) {
         this.jugador = jugador;
         this.monto = monto;
@@ -88,6 +94,11 @@ public class Presupuesto implements Serializable {
     public void setTipo_transaccion(String tipo_transaccion) {
         this.tipo_transaccion = tipo_transaccion;
     }
+    
+    
+    
+    
+    
     
     
     

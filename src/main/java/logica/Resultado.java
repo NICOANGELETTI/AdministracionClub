@@ -293,7 +293,41 @@ public class Resultado implements Serializable {
      
  }
     
+ public int getTotalPenalesErrados(List<Resultado> resultados){
+     int totalPenalesErrados = 0; 
+     
+     for(Resultado resultado : resultados){
+         totalPenalesErrados += resultado.getTotalPenalesErrados(resultados);
+     }
+     
+     return totalPenalesErrados; 
+ }
     
+ 
+ public int getTotalPenalesAtajados(List<Resultado> resultados){
+     int totalPenalesAtajados = 0 ;
+     
+     for(Resultado resultado : resultados){
+         totalPenalesAtajados = resultado.getTotalPenalesAtajados(resultados);
+         
+         
+         
+     }
+     return totalPenalesAtajados ;
+     
+ }
+ 
+ 
+ public int getTotalPenalesRecibidos(List<Resultado> resultados){
+     
+     int totalPenalesRecibidos = 0; 
+     for(Resultado resultado : resultados){
+         totalPenalesRecibidos += resultado.getTotalPenalesRecibidos(resultados);
+         
+     }
+     return totalPenalesRecibidos ; 
+     
+ }
     
 }
       

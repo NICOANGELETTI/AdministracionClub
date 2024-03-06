@@ -241,5 +241,36 @@ public class ControladoraLogica {
    public void eliminarAsistidor(int idAsistidor){
        controlPersis.eliminarAsistidor(idAsistidor);
    }
+
+
+   //Presupuesto
+   
+   public void crearPresupuesto(int monto, String tipo_transaccion, Jugador jugadorOne){
+       Presupuesto presupuesto = new Presupuesto();
+      
+       presupuesto.setMonto(monto);
+       presupuesto.setTipo_transaccion(tipo_transaccion);
+       presupuesto.setJugadorOne(jugadorOne);
+       
+       controlPersis.crearPresupuesto(presupuesto);
+       
+       
+   }
+   
+   
+   public void eliminarPresupuesto(int idPresupuesto){
+       
+       controlPersis.eliminarPresupuesto(idPresupuesto);
+       
+   }
+       
+       public List<Presupuesto> traerPresupuestos(){
+           return controlPersis.traerPresupuestos();
+           
+       }
+       
+       
+   
+
    
 }
