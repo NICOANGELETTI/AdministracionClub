@@ -30,7 +30,9 @@ public class JugadorJpaController implements Serializable {
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
-public JugadorJpaController(){
+
+    
+      public JugadorJpaController(){
         emf = Persistence.createEntityManagerFactory("adminClub_PU");
         
     }

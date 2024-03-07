@@ -19,13 +19,13 @@ public class Asistidor extends Jugador  implements Serializable{
         this.asistencias = asistencias;
     }
 
-    public Asistidor(int asistencias, int idJugador, String nombre, Date fecha_nac, String nacionalidad, String posicion, String estado) {
-        super(idJugador, nombre, fecha_nac, nacionalidad, posicion, estado);
+    public Asistidor(int asistencias, int idJugador, String nombre, Date fecha_nac, String nacionalidad, String posicion, String estado,boolean vendido) {
+        super(idJugador, nombre, fecha_nac, nacionalidad, posicion, estado,vendido);
         this.asistencias = asistencias;
     }
 
-    public Asistidor(int asistencias, String nombre, Date fecha_nac, String nacionalidad, String posicion, String estado) {
-        super(nombre, fecha_nac, nacionalidad, posicion, estado);
+    public Asistidor(int asistencias, String nombre, Date fecha_nac, String nacionalidad, String posicion, String estado,boolean vendido) {
+        super(nombre, fecha_nac, nacionalidad, posicion, estado,vendido);
         this.asistencias = asistencias;
     }
 

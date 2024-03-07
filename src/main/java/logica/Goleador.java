@@ -21,13 +21,13 @@ public class Goleador extends Jugador  implements Serializable{
         this.goles = goles;
     }
 
-    public Goleador(int goles, int idJugador, String nombre, Date fecha_nac, String nacionalidad, String posicion, String estado) {
-        super(idJugador, nombre, fecha_nac, nacionalidad, posicion, estado);
+    public Goleador(int goles, int idJugador, String nombre, Date fecha_nac, String nacionalidad, String posicion, String estado,boolean vendido) {
+        super(idJugador, nombre, fecha_nac, nacionalidad, posicion, estado,vendido);
         this.goles = goles;
     }
 
-    public Goleador(int goles, String nombre, Date fecha_nac, String nacionalidad, String posicion, String estado) {
-        super(nombre, fecha_nac, nacionalidad, posicion, estado);
+    public Goleador(int goles, String nombre, Date fecha_nac, String nacionalidad, String posicion, String estado,boolean vendido) {
+        super(nombre, fecha_nac, nacionalidad, posicion, estado,vendido);
         this.goles = goles;
     }
 

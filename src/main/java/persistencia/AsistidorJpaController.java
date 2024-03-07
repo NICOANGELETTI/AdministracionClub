@@ -30,7 +30,8 @@ public class AsistidorJpaController implements Serializable {
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
-public AsistidorJpaController(){
+
+      public AsistidorJpaController(){
         emf = Persistence.createEntityManagerFactory("adminClub_PU");
         
     }

@@ -57,12 +57,12 @@ public class SvAsistidor extends HttpServlet {
         
         int idJugador = Integer.parseInt(request.getParameter("idJugador"));
         int asistencias = Integer.parseInt(request.getParameter("asistenciasRealizadas"));
-        
+        boolean vendido = false;
         
         Jugador jugador = control.traerJugador(idJugador);
         
         
-        control.crearAsistidor(asistencias,jugador.getNombre(), jugador.getFecha_nac(), jugador.getNacionalidad(), jugador.getPosicion(), jugador.getEstado());
+        control.crearAsistidor(asistencias,jugador.getNombre(), jugador.getFecha_nac(), jugador.getNacionalidad(), jugador.getPosicion(), jugador.getEstado() , vendido);
       
        
          response.sendRedirect("SvAsistidor");

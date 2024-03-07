@@ -82,30 +82,78 @@
             
             
             
-    <!-- Modal para agregar Ingreso -->
+  <!-- Modal para agregar Ingreso -->
 <div class="modal fade" id="agregarIngresoModal" tabindex="-1" aria-labelledby="agregarIngresoModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content" style="background-color: #1a2940; color: #fff;">
             <div class="modal-header">
-                <h5 class="modal-title" id="agregarIngresoModalLabel">Agregar Ingreso</h5>
+                <h5 class="modal-title" id="agregarIngresoModalLabel">Agregar Nuevo Jugador al Plantel</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <!-- Contenido del formulario para agregar ingreso -->
-                <form action="SvPresupuesto" method="POST">
+                <form id="formularioPresupuesto" action="SvPresupuesto" method="POST">
+                
                     <div class="mb-3">
-                        <label for="descripcionIngreso" class="form-label">Descripción</label>
-                        <input type="text" class="form-control" id="descripcionIngreso" >
+                        <label for="montoEgreso" class="form-label">Monto (USD)</label>
+                        <input type="number" class="form-control" id="montoEgreso">
+                    </div><div class="mb-3">
+                        <label for="tipoOperacion" class="form-label">Tipo de transacción</label>
+                        <select name="tipoOperacion" class="form-select" id="Egreso" style="color: #000; background-color: #fff;">
+                            <option value="Egreso" style="color: black;">Egreso</option>
+                        </select>
                     </div>
-                    <div class="mb-3">
-                        <label for="montoIngreso" class="form-label">Monto (USD)</label>
-                        <input type="number" class="form-control" id="montoIngreso">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="background-color: #4a69bb; border-color: #4a69bb;">Cerrar</button>
-                        <button type="submit" class="btn btn-danger" style="background-color: #ff0000; border-color: #ff0000;">Agregar</button>
-                    </div>
-                </form>
+                    
+                    
+               
+
+                    
+                  <!-- Advertencia -->
+<div class="alert alert-success" role="alert">
+    Ingrese los datos del nuevo jugador de tu plantel
+</div>
+
+<!-- Formulario para agregar jugador -->
+
+    <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre del Nuevo Jugador:</label>
+        <input type="text" name="nombre" class="form-control" id="nombre" style="color: #000;">
+    </div>
+    <div class="mb-3">
+        <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento:</label>
+        <input type="date" name="fechaNacimiento" class="form-control" id="fechaNacimiento" style="color: #000;">
+    </div>
+    <div class="mb-3">
+        <label for="nacionalidad" class="form-label">Nacionalidad:</label>
+        <input type="text" name="nacionalidad" class="form-control" id="nacionalidad" style="color: #000;">
+    </div>
+    <div class="mb-3">
+        <label for="posicion" class="form-label">Posición:</label>
+        <select name="posicion" class="form-select" id="posicion" style="color: #000;">
+            <option value="ARQ">ARQ</option>
+            <option value="DEF">DEF</option>
+            <option value="MED">MED</option>
+            <option value="DEL">DEL</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="estado" class="form-label">Estado:</label>
+        <select name="estadoJugador" class="form-select" id="estado" style="color: #000;">
+            <option value="Activo">Activo</option>
+            <option value="Lesionado">Lesionado</option>
+            <option value="Relegado">Relegado</option>
+        </select>
+    </div>
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="background-color: #4a69bb; border-color: #4a69bb;">Cerrar</button>
+        <button type="submit" class="btn btn-danger" style="background-color: #ff0000; border-color: #ff0000;">Agregar</button>
+    </div>
+</form>
+
+                
+                
+                
             </div>
         </div>
     </div>
@@ -115,9 +163,7 @@
 
             
             
-            
-            
-<!-- Modal para Venta de jugador (Ingreso) -->
+<!-- Modal para Venta de jugador (Egreso) -->
 <div class="modal fade" id="agregarTransaccionModal" tabindex="-1" aria-labelledby="agregarTransaccionModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content" style="background-color: #1a2940; color: #fff;">
@@ -156,6 +202,11 @@
                         </select>
                     </div>
 
+                           <!-- Advertencia -->
+                    <div class="alert alert-warning" role="alert">
+                        Recuerda que si vendes a un jugador, este se borrará de tu lista de jugadores del plantel
+                    </div>
+                        
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="background-color: #4a69bb; border-color: #4a69bb;">Cerrar</button>
                         <button type="submit" class="btn btn-primary" style="background-color: #03e9f4; border-color: #03e9f4;">Agregar</button>

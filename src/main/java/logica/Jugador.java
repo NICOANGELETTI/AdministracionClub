@@ -27,34 +27,39 @@ public class Jugador implements Serializable {
     private String nacionalidad;
     private String posicion;
     private String estado;
-
+    private boolean vendido; 
  
     public Jugador() {
     }
 
-    public Jugador(int idJugador, String nombre, Date fecha_nac, String nacionalidad, String posicion, String estado) {
+    public Jugador(int idJugador, String nombre, Date fecha_nac, String nacionalidad, String posicion, String estado, boolean vendido) {
         this.idJugador = idJugador;
         this.nombre = nombre;
         this.fecha_nac = fecha_nac;
         this.nacionalidad = nacionalidad;
         this.posicion = posicion;
         this.estado = estado;
-       
+        this.vendido = vendido;
     }
 
-    public Jugador(String nombre, Date fecha_nac, String nacionalidad, String posicion, String estado) {
+    public Jugador(String nombre, Date fecha_nac, String nacionalidad, String posicion, String estado, boolean vendido) {
         this.nombre = nombre;
         this.fecha_nac = fecha_nac;
         this.nacionalidad = nacionalidad;
         this.posicion = posicion;
         this.estado = estado;
+        this.vendido = vendido;
     }
 
-    
- 
-    
+    public boolean isVendido() {
+        return vendido;
+    }
 
-   
+    public void setVendido(boolean vendido) {
+        this.vendido = vendido;
+    }
+
+
 
     public int getIdJugador() {
         return idJugador;

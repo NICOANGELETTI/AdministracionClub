@@ -2,7 +2,9 @@
 package servlet;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -44,7 +46,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response)
     //Egreso
     int idJugadorVenta = Integer.parseInt(request.getParameter("idJugadorVenta"));
     int montoIngreso = Integer.parseInt(request.getParameter("montoIngreso"));
-    String operacionEgreso = request.getParameter("tipoOperacion");
+    String operacionIngreso = request.getParameter("tipoOperacion");
     
     HttpSession session = request.getSession();
     if (session.getAttribute("totalPresupuesto") == null) {
@@ -64,7 +66,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response)
     }
     
     if (jugador != null) {
-        // Restar el monto de la transacción de egreso al total del presupuesto
+        // Sumar al monto de la transacción de ingreso al total del presupuesto
         Integer totalPresupuesto = control.calcularPresupuestoTotal();
         if (totalPresupuesto != null) {
             totalPresupuesto += montoIngreso;
@@ -72,31 +74,76 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response)
         }
         
         // Crear el presupuesto
-        control.crearPresupuesto(montoIngreso, operacionEgreso, jugador);
+        control.crearPresupuesto(montoIngreso, operacionIngreso, jugador);
         //Eliminar Jugador
         control.eliminarJugador(idJugadorVenta);
+        response.sendRedirect("presupuesto.jsp");
         
         
     } else {
         // Manejar el caso en que el jugador no se encuentre en la lista
     }
 
+   
     
     
     
     
     
-    //Ingreso
-    
-    
-    
-    
-    
-    
-    response.sendRedirect("presupuesto.jsp");
+//    //Ingreso
+//    
+//    
+//      int montoEgreso = Integer.parseInt(request.getParameter("montoEgreso"));
+//      String operacionEgreso = request.getParameter("tipoOperacion");
+// 
+//    //Jugador Nuevo
+//    String nombre = request.getParameter("nombre");
+//    String nacionalidad = request.getParameter("nacionalidad");
+//    String posicion = request.getParameter("posicion");
+//    String estado = request.getParameter("estadoJugador");
+//
+//                        //Fecha Nac 
+//                        // Obteniendo el valor del parámetro "fecha" de la solicitud
+//                        String fechaNacimientoString = request.getParameter("fechaNacimiento");
+//
+//                    // Creando un objeto SimpleDateFormat para el formato de fecha deseado
+//                        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy"); // Aquí debes especificar el formato en el que se encuentra la fecha en el parámetro
+//
+//                        Date fecha = null;
+//                        try {
+//                            // Parseando la cadena de fecha al objeto Date
+//                            fecha = formatoFecha.parse(fechaNacimientoString);
+//                        } catch (Exception e) {
+//                            // Manejo de errores si la conversión falla
+//                            e.printStackTrace(); // O manejar el error de alguna otra manera
+//                        }
+//                        
+//      Jugador nuevoJugador = new Jugador(nombre, fecha, nacionalidad, posicion, estado, true);
+//     
+//      
+//   
+//
+//        // Restar el monto de la transacción de egreso al total del presupuesto
+//        Integer totalPresupuesto = control.calcularPresupuestoTotal();
+//        if (totalPresupuesto != null) {
+//            totalPresupuesto -= montoEgreso;
+//           
+//            session.setAttribute("totalPresupuesto", totalPresupuesto);
+//        }
+//     
+//      
+//
+//     // Crear el presupuesto
+//       control.crearJugador(nombre, fecha, nacionalidad, posicion, estado, false);
+//       control.crearPresupuesto(montoIngreso, operacionEgreso, nuevoJugador);
+//       
+//    
+//    
+//    response.sendRedirect("presupuesto.jsp");
 }
 
-    
+   
+
     @Override
     public String getServletInfo() {
         return "Short description";

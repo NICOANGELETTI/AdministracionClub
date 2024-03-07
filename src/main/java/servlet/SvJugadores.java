@@ -13,7 +13,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import logica.Asistidor;
 import logica.ControladoraLogica;
+import logica.Goleador;
 import logica.Jugador;
 
 
@@ -40,9 +42,18 @@ public class SvJugadores extends HttpServlet {
         
         listaJugadores = control.traerJugadores();
         
+        
+        // Filtrar la lista para incluir solo instancias de la clase padre Jugador
+    List<Jugador> listaJugadoresFiltrada = new ArrayList<>();
+    for (Jugador jugador : listaJugadores) {
+        if (!(jugador instanceof Goleador) && !(jugador instanceof Asistidor)) {
+            listaJugadoresFiltrada.add(jugador);
+        }
+    }
+        
         HttpSession sesion = request.getSession(); 
-        sesion.setAttribute("listaJugadores", listaJugadores);
-        response.sendRedirect("jugadores.jsp");
+    sesion.setAttribute("listaJugadores", listaJugadoresFiltrada);
+    response.sendRedirect("jugadores.jsp");
         
         
         
@@ -59,7 +70,7 @@ public class SvJugadores extends HttpServlet {
         String nacionalidad = request.getParameter("nacionalidad");
         String posicion = request.getParameter("posicion");
         String estado = request.getParameter("estadoJugador");
-        
+        boolean vendido = false; 
         
          // Obteniendo el valor del parámetro "fecha" de la solicitud
       String fechaNacimientoString = request.getParameter("fechaNacimiento");
@@ -77,7 +88,7 @@ public class SvJugadores extends HttpServlet {
         }
         
         
-        control.crearJugador(nombre, fecha, nacionalidad, posicion, estado);
+        control.crearJugador(nombre, fecha, nacionalidad, posicion, estado,vendido);
         response.sendRedirect("SvJugadores");
     }
     

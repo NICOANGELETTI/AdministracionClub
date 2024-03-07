@@ -26,6 +26,7 @@
                                 <th>Nacionalidad</th>
                                 <th>Posición</th>
                                 <th>Estado</th>
+                               
                                 <th>Acciones</th>
                             </tr>
                         </thead>
@@ -46,6 +47,8 @@
                                 <td  style="color: #fff;">
                                     <%= jugador.getEstado()%>
                                 </td>
+                                
+                               
                                 <td>
                                     <!-- Botón para abrir el modal de editar jugador -->
                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editarJugadorModal" style="background-color: #03e9f4; border-color: #03e9f4; color: black;">

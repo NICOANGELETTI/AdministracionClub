@@ -55,12 +55,12 @@ public class SvGoleador extends HttpServlet {
         
          int idJugador = Integer.parseInt(  request.getParameter("idJugador"));
         int golesAnotados =   Integer.parseInt(request.getParameter("golesAnotados")); 
-                
+         boolean vendido = false;
       
               
        Jugador jugador = control.traerJugador(idJugador);
        
-       control.crearGoleador(golesAnotados, jugador.getNombre(), jugador.getFecha_nac(), jugador.getNacionalidad(), jugador.getPosicion() , jugador.getEstado());
+       control.crearGoleador(golesAnotados, jugador.getNombre(), jugador.getFecha_nac(), jugador.getNacionalidad(), jugador.getPosicion() , jugador.getEstado() , vendido);
         
       
         response.sendRedirect("SvGoleador");

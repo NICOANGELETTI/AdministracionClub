@@ -130,13 +130,14 @@ public class ControladoraLogica {
     
   //Jugadores
     
-    public void crearJugador(String nombre, Date fecha_nac, String nacionalidad, String posicion, String estado){
+    public void crearJugador(String nombre, Date fecha_nac, String nacionalidad, String posicion, String estado , boolean vendido){
         Jugador jugador = new Jugador();
         jugador.setNombre(nombre);
         jugador.setFecha_nac(fecha_nac);
         jugador.setNacionalidad(nacionalidad);
         jugador.setPosicion(posicion);
         jugador.setEstado(estado);
+        jugador.setVendido(vendido);
         controlPersis.crearJugador(jugador);
         
         
@@ -168,7 +169,7 @@ public class ControladoraLogica {
 //Goleador
    
    
-   public void crearGoleador(int goles, String nombre, Date fecha_nac, String nacionalidad, String posicion, String estado){
+   public void crearGoleador(int goles, String nombre, Date fecha_nac, String nacionalidad, String posicion, String estado,boolean vendido){
        
        Goleador goleador = new Goleador();
        goleador.setNombre(nombre);
@@ -177,6 +178,7 @@ public class ControladoraLogica {
        goleador.setNacionalidad(nacionalidad);
        goleador.setPosicion(posicion);
        goleador.setEstado(estado);
+       goleador.setVendido(vendido);
        
        controlPersis.crearGoleador(goleador);
        
@@ -216,7 +218,7 @@ public class ControladoraLogica {
    
    //Asistidores
    
-   public void crearAsistidor(int asistencias, String nombre, Date fecha_nac, String nacionalidad, String posicion, String estado) {
+   public void crearAsistidor(int asistencias, String nombre, Date fecha_nac, String nacionalidad, String posicion, String estado,boolean vendido) {
 
         Asistidor asistidor = new Asistidor();
         asistidor.setAsistencias(asistencias);
@@ -225,6 +227,7 @@ public class ControladoraLogica {
         asistidor.setNacionalidad(nacionalidad);
         asistidor.setPosicion(posicion);
         asistidor.setEstado(estado);
+        asistidor.setVendido(vendido);
 
         controlPersis.crearAsistidor(asistidor);
    
