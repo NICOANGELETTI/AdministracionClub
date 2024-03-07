@@ -29,51 +29,72 @@ public class SvPresupuesto extends HttpServlet {
     }
 
   
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-        
-       
-            
-            
-        
+   @Override
+protected void doGet(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+    processRequest(request, response);
+}
+
+
+@Override
+protected void doPost(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+    processRequest(request, response);
+    
+    //Egreso
+    int idJugadorVenta = Integer.parseInt(request.getParameter("idJugadorVenta"));
+    int montoIngreso = Integer.parseInt(request.getParameter("montoIngreso"));
+    String operacionEgreso = request.getParameter("tipoOperacion");
+    
+    HttpSession session = request.getSession();
+    if (session.getAttribute("totalPresupuesto") == null) {
+        session.setAttribute("totalPresupuesto", 0); // Inicializar con un valor predeterminado (en este caso, 0)
     }
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
+    // Obtener la lista de jugadores en tiempo real
+    List<Jugador> listaJugadores = control.traerJugadores();
     
-        int idJugadorEgreso =  Integer.parseInt(request.getParameter("idJugadorEgreso"));
-              
-        int montoEgreso = Integer.parseInt(request.getParameter("montoEgreso"));
-        
-        String operacionEgreso = request.getParameter("tipoOperacion");
-        
-        Jugador jugador = control.traerJugador(idJugadorEgreso);
-        
-        
-       
-        
-         
-        
-       // Restar el monto de la transacción de egreso al monto total
-    int montoTotal = (Integer) request.getSession().getAttribute("montoTotal");
-    montoTotal -= montoEgreso;  HttpSession sesion = request.getSession();
-            sesion.setAttribute("montoTotal", montoTotal);
-        
-        
-        
-        
-        control.crearPresupuesto(montoEgreso, operacionEgreso, jugador);
-        
-        
-        response.sendRedirect("presupuesto.jsp");
-        
-        
-    
+    // Buscar el jugador por su ID
+    Jugador jugador = null;
+    for (Jugador j : listaJugadores) {
+        if (j.getIdJugador() == idJugadorVenta) {
+            jugador = j;
+            break;
+        }
     }
+    
+    if (jugador != null) {
+        // Restar el monto de la transacción de egreso al total del presupuesto
+        Integer totalPresupuesto = control.calcularPresupuestoTotal();
+        if (totalPresupuesto != null) {
+            totalPresupuesto += montoIngreso;
+            session.setAttribute("totalPresupuesto", totalPresupuesto);
+        }
+        
+        // Crear el presupuesto
+        control.crearPresupuesto(montoIngreso, operacionEgreso, jugador);
+        //Eliminar Jugador
+        control.eliminarJugador(idJugadorVenta);
+        
+        
+    } else {
+        // Manejar el caso en que el jugador no se encuentre en la lista
+    }
+
+    
+    
+    
+    
+    
+    //Ingreso
+    
+    
+    
+    
+    
+    
+    response.sendRedirect("presupuesto.jsp");
+}
 
     
     @Override

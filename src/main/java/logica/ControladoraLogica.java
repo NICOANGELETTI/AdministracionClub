@@ -271,6 +271,25 @@ public class ControladoraLogica {
        
        
    
-
+public int calcularPresupuestoTotal(){
+    
+    int montoTotal =0; 
+    
+    List<Presupuesto> listaPresupuesto = this.traerPresupuestos();
+    
+    for(Presupuesto presupuesto : listaPresupuesto){
+       int montoPresupuesto = presupuesto.getMonto();
+      if(presupuesto.getTipo_transaccion().equals("Egreso")){
+          montoTotal -= montoPresupuesto; 
+      }else{
+          montoTotal += montoPresupuesto; 
+          
+      }
+      
+    }
+    
+     return montoTotal;
+    
+}
    
 }
