@@ -14,9 +14,15 @@
             <!-- Page content-->
             <div class="container-fluid">
                 <h1 class="mt-4">Lista de Jugadores del Plantel</h1>
-                <div class="mb-3">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agregarJugadorModal" style="background-color: #03e9f4; border-color: #03e9f4; color: black;">Agregar Jugador</button>
-                </div>
+                 <div class="mb-3">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agregarJugadorModal" 
+                style="background-color: #03e9f4; border-color: #03e9f4; color: black;">
+            Agregar Jugador de la Cantera
+        </button>
+        <div class="alert alert-warning mt-2" role="alert" style="max-width: 500px;">
+            Desde aqui puedes agregar jugadores de la cantera. Para agregar jugadores provenientes de otros clubes, dirígete a la sección "Presupuesto" --> "Compra de Jugador".
+        </div>
+    </div>
                 <div class="table-responsive">
                     <table class="table table-striped" style="color: #fff;">
                         <thead>

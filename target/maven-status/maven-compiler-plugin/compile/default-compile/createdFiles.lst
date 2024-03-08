@@ -6,6 +6,7 @@ logica\Usuario.class
 logica\Goleador.class
 servlet\SvGoleador.class
 servlet\SvLogin.class
+servlet\SvCompraJugador.class
 servlet\SvElimJugador.class
 persistencia\UsuarioJpaController.class
 servlet\SvEditJugadores.class

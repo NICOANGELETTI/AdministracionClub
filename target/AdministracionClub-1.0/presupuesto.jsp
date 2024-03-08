@@ -1,3 +1,4 @@
+<%@page import="logica.Presupuesto"%>
 <%@page import="logica.ControladoraLogica"%>
 <%@page import="logica.Jugador"%>
 <%@page import="java.util.List"%>
@@ -15,7 +16,7 @@
 
             <!-- Page content-->
             <div class="container-fluid">
-                <h1 class="mt-4">Presupuesto Jugadores</h1>
+              
 
                 <!-- Cuadro grande con presupuesto total -->
                 <div class="jumbotron mt-4" style="background-color: #1a2940;">
@@ -28,6 +29,10 @@
         int montoTotal = control.calcularPresupuestoTotal();
     %>
     <p class="lead mb-0"> <%= montoTotal != 0 ? montoTotal : "Presupuesto no disponible" %></p>
+  <!-- Advertencia -->
+        <div class="alert alert-warning" role="alert">
+            <strong>¡Atencion!</strong> Todas los Ingresos / Egresos de jugadores se vera impactado en tu monto para realizar Compra de jugadores
+        </div>
 </div>
                 </div>
 
@@ -44,32 +49,51 @@
 
 </div>
 
-
-
+                
+                
+                
+                
+              
                 <!-- Lista de transacciones realizadas -->
-                <h2 class="mt-4">Transacciones Realizadas</h2>
+                <h2 class="mt-4">Operaciones Realizadas</h2>
                 <div class="table-responsive" style="color: #fff;">
                     <table class="table table-striped">
                         <thead style="color: white;">
                             <tr>
-                                <th>Nombre</th>
+                                <th>Nº Operacion</th>
                                 <th>Monto</th>
                                 <th>Tipo</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td style="color: white;">Transacción 1</td>
-                                <td style="color: white;">$5,000,000 USD</td>
-                                <td style="color: white;">Ingreso</td>
-                            </tr>
-                            <tr>
-                                <td style="color: white;">Transacción 2</td>
-                                <td style="color: white;">$1,000,000 USD</td>
-                                <td style="color: white;">Egreso</td>
-                            </tr>
-                            <!-- Agrega más filas según sea necesario -->
-                        </tbody>
+                            
+                           <%    // Gracias a esto magicamente se mostro la listaMovientos
+                                    request.getRequestDispatcher("SvPresupuesto").include(request, response);
+                                     request.getRequestDispatcher("SvCompraJugador").include(request, response);
+
+                                %>            
+                            
+            <% 
+               
+                
+                List<Presupuesto> listaMovimientos = (List) request.getSession().getAttribute("listaMovimientos");
+            if (listaMovimientos != null && !listaMovimientos.isEmpty()) {
+                for (Presupuesto movimiento : listaMovimientos) { %>
+                    <tr>
+                        
+                      
+                        <td style="color: white;">###<%= movimiento.getIdPresupuesto() %></td>
+                        <td style="color: white;"><%= movimiento.getMonto() %></td>
+                        <td style="color: white;"><%= movimiento.getTipo_transaccion() %></td>
+                    </tr>
+                <% }
+            } else { %>
+                <tr>
+                    <td colspan='3' style='color: #fff;'>No hay Presupuestos en tu club</td>
+                </tr>
+            <% } %>
+        </tbody>
+                            
                     </table>
                 </div>
             </div>
@@ -78,11 +102,12 @@
 
             
             
-            
-            
-            
-            
-  <!-- Modal para agregar Ingreso -->
+
+
+
+
+
+<!-- Modal para agregar Egreso -->
 <div class="modal fade" id="agregarIngresoModal" tabindex="-1" aria-labelledby="agregarIngresoModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content" style="background-color: #1a2940; color: #fff;">
@@ -92,68 +117,84 @@
             </div>
             <div class="modal-body">
                 <!-- Contenido del formulario para agregar ingreso -->
-                <form id="formularioPresupuesto" action="SvPresupuesto" method="POST">
+                <form  action="SvCompraJugador" method="POST">
                 
+                    <!-- Campo de monto (USD) -->
                     <div class="mb-3">
                         <label for="montoEgreso" class="form-label">Monto (USD)</label>
-                        <input type="number" class="form-control" id="montoEgreso">
-                    </div><div class="mb-3">
+                        <input type="number" class="form-control" id="montoEgreso" name="montoEgreso">
+                    </div>
+
+                    <!-- Checkbox para ingresar como jugador libre o sin cargo -->
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" value="" id="jugadorLibreCheckbox" onchange="actualizarMonto()">
+                        <label class="form-check-label" for="jugadorLibreCheckbox">
+                            Ingresa como jugador libre o sin cargo
+                        </label>
+                    </div>
+
+                    <script>
+                        function actualizarMonto() {
+                            var montoInput = document.getElementById('montoEgreso');
+                            var checkbox = document.getElementById('jugadorLibreCheckbox');
+
+                            if (checkbox.checked) {
+                                montoInput.value = 0;
+                                montoInput.disabled = true;
+                            } else {
+                                montoInput.disabled = false;
+                            }
+                        }
+                    </script>
+
+                    <!-- Selección del tipo de transacción -->
+                    <div class="mb-3">
                         <label for="tipoOperacion" class="form-label">Tipo de transacción</label>
                         <select name="tipoOperacion" class="form-select" id="Egreso" style="color: #000; background-color: #fff;">
                             <option value="Egreso" style="color: black;">Egreso</option>
                         </select>
                     </div>
-                    
-                    
-               
 
-                    
-                  <!-- Advertencia -->
-<div class="alert alert-success" role="alert">
-    Ingrese los datos del nuevo jugador de tu plantel
-</div>
+                    <!-- Formulario para agregar jugador -->
+                    <div class="alert alert-success mt-2" role="alert">
+                        Ingrese los datos del nuevo jugador de tu plantel
+                    </div>
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre del Nuevo Jugador:</label>
+                        <input type="text" name="nombre" class="form-control" id="nombre" style="color: #000;">
+                    </div>
+                    <div class="mb-3">
+                        <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento:</label>
+                        <input type="date" name="fechaNacimiento" class="form-control" id="fechaNacimiento" style="color: #000;">
+                    </div>
+                    <div class="mb-3">
+                        <label for="nacionalidad" class="form-label">Nacionalidad:</label>
+                        <input type="text" name="nacionalidad" class="form-control" id="nacionalidad" style="color: #000;">
+                    </div>
+                    <div class="mb-3">
+                        <label for="posicion" class="form-label">Posición:</label>
+                        <select name="posicion" class="form-select" id="posicion" style="color: #000;">
+                            <option value="ARQ">ARQ</option>
+                            <option value="DEF">DEF</option>
+                            <option value="MED">MED</option>
+                            <option value="DEL">DEL</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="estado" class="form-label">Estado:</label>
+                        <select name="estadoJugador" class="form-select" id="estado" style="color: #000;">
+                            <option value="Activo">Activo</option>
+                            <option value="Lesionado">Lesionado</option>
+                            <option value="Relegado">Relegado</option>
+                        </select>
+                    </div>
 
-<!-- Formulario para agregar jugador -->
-
-    <div class="mb-3">
-        <label for="nombre" class="form-label">Nombre del Nuevo Jugador:</label>
-        <input type="text" name="nombre" class="form-control" id="nombre" style="color: #000;">
-    </div>
-    <div class="mb-3">
-        <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento:</label>
-        <input type="date" name="fechaNacimiento" class="form-control" id="fechaNacimiento" style="color: #000;">
-    </div>
-    <div class="mb-3">
-        <label for="nacionalidad" class="form-label">Nacionalidad:</label>
-        <input type="text" name="nacionalidad" class="form-control" id="nacionalidad" style="color: #000;">
-    </div>
-    <div class="mb-3">
-        <label for="posicion" class="form-label">Posición:</label>
-        <select name="posicion" class="form-select" id="posicion" style="color: #000;">
-            <option value="ARQ">ARQ</option>
-            <option value="DEF">DEF</option>
-            <option value="MED">MED</option>
-            <option value="DEL">DEL</option>
-        </select>
-    </div>
-    <div class="mb-3">
-        <label for="estado" class="form-label">Estado:</label>
-        <select name="estadoJugador" class="form-select" id="estado" style="color: #000;">
-            <option value="Activo">Activo</option>
-            <option value="Lesionado">Lesionado</option>
-            <option value="Relegado">Relegado</option>
-        </select>
-    </div>
-
-    <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="background-color: #4a69bb; border-color: #4a69bb;">Cerrar</button>
-        <button type="submit" class="btn btn-danger" style="background-color: #ff0000; border-color: #ff0000;">Agregar</button>
-    </div>
-</form>
-
-                
-                
-                
+                    <!-- Botones de acción -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="background-color: #4a69bb; border-color: #4a69bb;">Cerrar</button>
+                        <button type="submit" class="btn btn-danger" style="background-color: #ff0000; border-color: #ff0000;">Agregar</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -163,7 +204,7 @@
 
             
             
-<!-- Modal para Venta de jugador (Egreso) -->
+<!-- Modal para Venta de jugador (Ingreso) -->
 <div class="modal fade" id="agregarTransaccionModal" tabindex="-1" aria-labelledby="agregarTransaccionModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content" style="background-color: #1a2940; color: #fff;">

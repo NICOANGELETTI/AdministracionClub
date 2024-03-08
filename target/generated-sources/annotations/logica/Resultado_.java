@@ -5,7 +5,7 @@ import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import logica.Partido;
 
-@Generated(value="EclipseLink-2.7.10.v20211216-rNA", date="2024-03-07T14:35:57")
+@Generated(value="EclipseLink-2.7.10.v20211216-rNA", date="2024-03-08T20:33:41")
 @StaticMetamodel(Resultado.class)
 public class Resultado_ { 
 

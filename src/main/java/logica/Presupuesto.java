@@ -2,6 +2,8 @@
 package logica;
 
 import java.io.Serializable;
+import java.util.UUID;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,7 +23,7 @@ public class Presupuesto implements Serializable {
     private int monto; 
     private String tipo_transaccion;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.PERSIST)
     private Jugador jugadorOne;
     
     public Presupuesto() {
@@ -99,7 +101,6 @@ public class Presupuesto implements Serializable {
     
     
     
-    
-    
+  
     
 }
