@@ -40,6 +40,7 @@ public class SvElimPartidos extends HttpServlet {
         
         int idPartido = Integer.parseInt(request.getParameter("id"));
       
+       control.eliminarResultado(idPartido);
        control.eliminarPartido(idPartido);
        
        response.sendRedirect("SvPartidos");

@@ -3,6 +3,7 @@ package logica;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -32,7 +33,8 @@ public class Resultado implements Serializable {
     private boolean miEquipoLocal;  
 
     
-     @OneToOne
+    //Anotacion para borrar en cascada y no tener problemas de consistencia entre resultado y partido.
+     @OneToOne(cascade = CascadeType.REMOVE)
     private Partido partido;
   
     public Resultado() {

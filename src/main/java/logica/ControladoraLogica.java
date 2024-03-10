@@ -105,6 +105,7 @@ public class ControladoraLogica {
         
         
     }
+      
     //Resultados
     
     public void crearResultado(int idResultado, String nombreEquipoL, String nombreEquipoV, int golesConvertidos, int golesRecibidos, int tarjetasAmarillas_recibidas, int tarjetasRojas_recibidas, int tarjetasAmarillas_provocadas, int tarjetasRojas_provocadas, int penalesConvertidos, int penalesErrados, int penalesAtajados, int penalesRecibidos, Partido partido){
@@ -136,6 +137,16 @@ public class ControladoraLogica {
         
     }
     
+    public Resultado traerResultado(int idResultado){
+        return controlPersis.traerResultado(idResultado);
+    }
+    
+    public void eliminarResultado(int idResultado){
+        
+        controlPersis.eliminarResultado(idResultado);
+        
+        
+    }
     
     
   //Jugadores

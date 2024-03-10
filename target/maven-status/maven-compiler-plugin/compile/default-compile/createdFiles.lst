@@ -19,7 +19,6 @@ persistencia\ResultadoJpaController.class
 persistencia\ControladoraPersistencia.class
 servlet\SvJugadores.class
 persistencia\exceptions\IllegalOrphanException.class
-.netbeans_automatic_build
 servlet\SvUsuarios.class
 logica\Presupuesto.class
 persistencia\JugadorJpaController.class

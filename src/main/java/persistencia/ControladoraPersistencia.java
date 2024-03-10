@@ -88,9 +88,19 @@ public class ControladoraPersistencia {
         return resultadoJPA.findResultadoEntities();
     }
     
-   
+    public Resultado traerResultado(int idResultado) {
+        return resultadoJPA.findResultado(idResultado);
+    }
+
     
-   
+   public void eliminarResultado(int idResultado) {
+        try {
+            resultadoJPA.destroy(idResultado);
+        } catch (NonexistentEntityException ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+          
+         }
 
     public void actualizarEstado(int idPartido, boolean estadoNuevo) {
     // Obtener el partido de la base de datos
@@ -165,6 +175,9 @@ public class ControladoraPersistencia {
 
     }
 
+         
+
+       
    public List<Goleador> traerGoleadores() {
 
 
@@ -239,6 +252,8 @@ public class ControladoraPersistencia {
        
     }
 
+  
+   
   
 
     

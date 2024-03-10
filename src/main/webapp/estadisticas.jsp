@@ -303,6 +303,64 @@
                             
                    %> 
                    
+          <div class="container-fluid text-center">
+    <!-- Encabezado de Estadísticas Generales -->
+    <h1 class="mt-4" style="color: white;">Estadísticas de la Temporada</h1>
+         <div class="container-fluid">
+    <!-- Tabla de goles convertidos y tabla de goles recibidos -->
+    <div class="row">
+        <!-- Tabla de goles convertidos -->
+        <div class="col-md-6">
+            <h2 style="color: white;">Goles Convertidos</h2>
+            <div class="table-responsive">
+                <table class="table table-striped" style="color: #fff;">
+                    <thead>
+                        <tr>
+                            <th style="color: white;">Total de Goles</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                           <td style="color: white;"><%= request.getAttribute("golesConvertidos") %></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- Fin de la tabla de goles convertidos -->
+
+        <!-- Tabla de goles recibidos -->
+        <div class="col-md-6">
+            <h2 style="color: white;">Goles Recibidos</h2>
+            <div class="table-responsive">
+                <table class="table table-striped" style="color: #fff;">
+                    <thead>
+                        <tr>
+                            <th style="color: white;">Total de Goles</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                           <td style="color: white;"><%= request.getAttribute("golesRecibidos") %></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- Fin de la tabla de goles recibidos -->
+    </div>
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
     <!-- Tabla de tarjetas -->
     <div class="row">
         <div class="col-md-6">
@@ -408,7 +466,7 @@
     </div>
     <!-- Fin de la tabla de penales -->
 </div>
-
+               </div>
 
                
 
