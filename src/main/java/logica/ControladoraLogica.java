@@ -107,12 +107,12 @@ public class ControladoraLogica {
     }
     //Resultados
     
-    public void crearResultado(int idResultado, String nombreEquipoL, String nombreEquipoV, int golesEquipoLocal, int golesEquipoVisitante, int tarjetasAmarillas_recibidas, int tarjetasRojas_recibidas, int tarjetasAmarillas_provocadas, int tarjetasRojas_provocadas, int penalesConvertidos, int penalesErrados, int penalesAtajados, int penalesRecibidos, Partido partido){
+    public void crearResultado(int idResultado, String nombreEquipoL, String nombreEquipoV, int golesConvertidos, int golesRecibidos, int tarjetasAmarillas_recibidas, int tarjetasRojas_recibidas, int tarjetasAmarillas_provocadas, int tarjetasRojas_provocadas, int penalesConvertidos, int penalesErrados, int penalesAtajados, int penalesRecibidos, Partido partido){
         Resultado resultado = new Resultado();
         resultado.setNombreEquipoL(nombreEquipoL);
         resultado.setNombreEquipoV(nombreEquipoV);
-        resultado.setGolesEquipoLocal(golesEquipoLocal);
-        resultado.setGolesEquipoVisitante(golesEquipoVisitante);
+        resultado.setGolesConvertidos(golesConvertidos);
+        resultado.setGolesRecibidos(golesRecibidos);
         resultado.setTarjetasAmarillas_recibidas(tarjetasAmarillas_recibidas);
         resultado.setTarjetasRojas_recibidas(tarjetasRojas_recibidas);
         resultado.setTarjetasAmarillas_provocadas(tarjetasAmarillas_provocadas);
@@ -127,6 +127,16 @@ public class ControladoraLogica {
         controlPersis.crearResultado(resultado);
         
     }
+    
+    
+    //Resultado
+    
+    public List<Resultado> traerResultados(){
+       return controlPersis.traerResultados();
+        
+    }
+    
+    
     
   //Jugadores
     

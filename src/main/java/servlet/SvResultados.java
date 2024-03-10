@@ -33,6 +33,8 @@ public class SvResultados extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        
+        
     }
 
    
@@ -43,8 +45,8 @@ public class SvResultados extends HttpServlet {
         
         String equipoLocal = request.getParameter("equipoLocal");
         String equipoVisitante = request.getParameter("equipoVisitante");
-        int golesEqLocal = Integer.parseInt(request.getParameter("golesEqLocal"));
-        int golesEqVisit = Integer.parseInt(request.getParameter("golesEqVisit"));
+        int golesConvertidos = Integer.parseInt(request.getParameter("golesConvertidos"));
+        int golesRecibidos = Integer.parseInt(request.getParameter("golesRecibidos"));
         int tarjetasAmarillasEqLocal = Integer.parseInt(request.getParameter("tarjetasAmarillasEqLocal"));
         int tarjetasRojasEqLocal = Integer.parseInt(request.getParameter("tarjetasRojasEqLocal"));
         int tarjetasAmarillasEqVisit = Integer.parseInt(request.getParameter("tarjetasAmarillasEqVisit"));
@@ -59,8 +61,7 @@ public class SvResultados extends HttpServlet {
       Partido partido = control.traerPartido(idPartido);
       
     //Creo Resultado
-      control.crearResultado(idPartido, equipoLocal, equipoVisitante, golesEqLocal, golesEqVisit, tarjetasAmarillasEqVisit, tarjetasRojasEqVisit, tarjetasAmarillasEqLocal, tarjetasRojasEqLocal, penalesConvertidos, penalesErrados, penalesAtajados, penalesRecibidos, partido);
-        // Actualizar el estado del partido en la base de datos
+control.crearResultado(idPartido, equipoLocal, equipoLocal, golesConvertidos, golesRecibidos, tarjetasAmarillasEqVisit, tarjetasRojasEqVisit, tarjetasAmarillasEqLocal, tarjetasRojasEqLocal, penalesConvertidos, penalesErrados, penalesAtajados, penalesRecibidos, partido);        // Actualizar el estado del partido en la base de datos
     control.actualizarEstado(idPartido, true);
     request.getSession().setAttribute("resultadoCargado", true);
 

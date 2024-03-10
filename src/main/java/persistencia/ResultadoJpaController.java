@@ -29,8 +29,10 @@ public class ResultadoJpaController implements Serializable {
 
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
+
     }
 
+    
     public ResultadoJpaController(){
         emf = Persistence.createEntityManagerFactory("adminClub_PU");
         

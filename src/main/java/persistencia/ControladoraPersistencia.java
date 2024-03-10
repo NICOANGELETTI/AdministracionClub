@@ -83,6 +83,13 @@ public class ControladoraPersistencia {
         resultadoJPA.create(resultado);
         
     }
+    
+      public List<Resultado> traerResultados() {
+        return resultadoJPA.findResultadoEntities();
+    }
+    
+   
+    
    
 
     public void actualizarEstado(int idPartido, boolean estadoNuevo) {
@@ -231,6 +238,8 @@ public class ControladoraPersistencia {
         return presupuestoJPA.findPresupuestoEntities();
        
     }
+
+  
 
     
     

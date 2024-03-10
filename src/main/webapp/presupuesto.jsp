@@ -28,7 +28,7 @@
         ControladoraLogica control = new ControladoraLogica();
         int montoTotal = control.calcularPresupuestoTotal();
     %>
-    <p class="lead mb-0"> <%= montoTotal != 0 ? montoTotal : "Presupuesto no disponible" %></p>
+    <p class="lead mb-0">USD <%= montoTotal != 0 ? montoTotal : "Presupuesto no disponible" %></p>
   <!-- Advertencia -->
         <div class="alert alert-warning" role="alert">
             <strong>¡Atencion!</strong> Todas los Ingresos / Egresos de jugadores se vera impactado en tu monto para realizar Compra de jugadores
@@ -62,7 +62,7 @@
                             <tr>
                                 <th>Nº Operacion</th>
                                 <th>Monto</th>
-                                <th>Tipo</th>
+                                <th>Movimiento</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -82,7 +82,7 @@
                     <tr>
                         
                       
-                        <td style="color: white;">###<%= movimiento.getIdPresupuesto() %></td>
+                        <td style="color: white;">###0021<%= movimiento.getIdPresupuesto() %> </td>
                         <td style="color: white;"><%= movimiento.getMonto() %></td>
                         <td style="color: white;"><%= movimiento.getTipo_transaccion() %></td>
                     </tr>

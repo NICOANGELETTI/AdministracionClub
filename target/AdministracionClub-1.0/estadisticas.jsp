@@ -1,4 +1,3 @@
-
 <%@page import="logica.Asistidor"%>
 <%@page import="logica.Goleador"%>
 <%@page import="logica.Jugador"%>
@@ -188,7 +187,10 @@
         
         
         
-        
+           <%    // Se mostro la lista de Asistidores
+                                    request.getRequestDispatcher("SvAsistidor").include(request, response);
+
+                                %>            
         
         <!--Aca esta el problema de la lista que no trae al refrescar la pagina-->
   <tbody>
@@ -281,34 +283,62 @@
                     </div>
                 </div>
                <div class="container-fluid">
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                  
+                   
+                        <%        
+
+                               
+                               request.getRequestDispatcher("SvEstadisticas").include(request, response);
+                             
+
+
+                            
+                   %> 
+                   
     <!-- Tabla de tarjetas -->
     <div class="row">
         <div class="col-md-6">
-            <h2 style="color: white;">Tarjetas Provocadas</h2>
+            <h2 style="color: white;">Tarjetas Provocadas(<%= request.getAttribute("tarjetasTotalProvocadas") %>)</h2>
             <div class="table-responsive">
                 <table class="table table-striped" style="color: #fff;">
                     <thead>
+                        
                         <tr>
                             <th style="color: white;">Amarillas</th>
                             <th style="color: white;">Rojas</th>
                         </tr>
                     </thead>
                     <tbody>
+                   
+
+                   <%  
+                       
+
+                       
+                    
+
+
+                   %>
                         <tr>
-                            <td style="color: white;">5</td>
-                            <td style="color: white;">1</td>
-                        </tr>
-                        <tr>
-                            <td style="color: white;">3</td>
-                            <td style="color: white;">2</td>
-                        </tr>
+                        
+                           <td style="color: white;"><%= request.getAttribute("tarjetasAmarillasProvocadas") %></td>
+                           <td style="color: white;"><%= request.getAttribute("tarjetasRojasProvocadas") %></td>                        </tr>
+                      
                         <!-- Agrega más filas según sea necesario -->
                     </tbody>
                 </table>
             </div>
         </div>
         <div class="col-md-6">
-            <h2 style="color: white;">Tarjetas Recibidas</h2>
+            <h2 style="color: white;">Tarjetas Recibidas(<%= request.getAttribute("tarjetasTotalRecibidas") %>)</h2>
             <div class="table-responsive">
                 <table class="table table-striped" style="color: #fff;">
                     <thead>
@@ -318,13 +348,10 @@
                         </tr>
                     </thead>
                     <tbody>
+                      
                         <tr>
-                            <td style="color: white;">2</td>
-                            <td style="color: white;">0</td>
-                        </tr>
-                        <tr>
-                            <td style="color: white;">1</td>
-                            <td style="color: white;">1</td>
+                             <td style="color: white;"><%= request.getAttribute("tarjetasAmarillasRecibidas") %></td>
+                           <td style="color: white;"><%= request.getAttribute("tarjetasRojasRecibidas") %></td> 
                         </tr>
                         <!-- Agrega más filas según sea necesario -->
                     </tbody>
@@ -337,7 +364,7 @@
     <!-- Tabla de penales -->
     <div class="row">
         <div class="col-md-6">
-            <h2 style="color: white;">Penales a Favor</h2>
+            <h2 style="color: white;">Penales a Favor(<%= request.getAttribute("penalesTotalesPateados") %>)</h2>
             <div class="table-responsive">
                 <table class="table table-striped" style="color: #fff;">
                     <thead>
@@ -348,20 +375,17 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td style="color: white;">5</td>
-                            <td style="color: white;">1</td>
+                           <td style="color: white;"><%= request.getAttribute("penalesConvertidos") %></td>
+                           <td style="color: white;"><%= request.getAttribute("penalesErrados") %></td> 
                         </tr>
-                        <tr>
-                            <td style="color: white;">3</td>
-                            <td style="color: white;">2</td>
-                        </tr>
-                        <!-- Agrega más filas según sea necesario -->
+                      
+                        
                     </tbody>
                 </table>
             </div>
         </div>
         <div class="col-md-6">
-            <h2 style="color: white;">Penales en Contra</h2>
+            <h2 style="color: white;">Penales en Contra(<%= request.getAttribute("penalesTotalesRecibidos") %>)</h2>
             <div class="table-responsive">
                 <table class="table table-striped" style="color: #fff;">
                     <thead>
@@ -372,14 +396,11 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td style="color: white;">3</td>
-                            <td style="color: white;">1</td>
+                            <td style="color: white;"><%= request.getAttribute("penalesRecibidos") %></td>
+                           <td style="color: white;"><%= request.getAttribute("penalesAtajados") %></td> 
                         </tr>
-                        <tr>
-                            <td style="color: white;">2</td>
-                            <td style="color: white;">0</td>
-                        </tr>
-                        <!-- Agrega más filas según sea necesario -->
+                    
+                        
                     </tbody>
                 </table>
             </div>
@@ -389,28 +410,7 @@
 </div>
 
 
-                <!-- Tabla de posesión promedio -->
-                <div class="row justify-content-center">
-                    <div class="col-md-6">
-                        <h2 class="text-center" style="color: white;">Posesión Promedio</h2>
-                        <div class="table-responsive">
-                            <table class="table table-striped text-center" style="color: #fff;">
-                                <thead>
-                                    <tr>
-                                        <th style="color: white;">Posesión Promedio (%)</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td style="color: white;">55</td>
-                                    </tr>
-                                    <!-- Agrega más filas según sea necesario -->
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <!-- Fin de la tabla de posesión promedio -->
+               
 
             </div>
         </div>

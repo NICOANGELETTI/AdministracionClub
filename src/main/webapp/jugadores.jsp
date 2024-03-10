@@ -1,7 +1,9 @@
+
 <%@page import="logica.Jugador"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="componentes/header.jsp" %>
+
 <body style="background-color: #141e30; color: #fff;">
     <div class="d-flex" id="wrapper">
 

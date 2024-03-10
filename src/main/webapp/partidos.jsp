@@ -11,95 +11,83 @@
         <div id="page-content-wrapper">
             <%@include file="componentes/navbar.jsp" %>
 
-            <!-- Page content-->
-            <div class="container-fluid">
-                <h1 class="mt-4">Lista de Partidos Programados</h1>
-            
-                <!-- Botón para cargar próximo partido -->
-                <button type="button" class="btn" style="width: 20%; padding: 10px 20px; font-size: 16px; background: #03e9f4; border: none; outline: none; border-radius: 5px; cursor: pointer; transition: background 0.3s ease; color: #000;" data-bs-toggle="modal" data-bs-target="#cargarProximoPartidoModal">Cargar Partido Próximo</button>
-                
-                <div class="table-responsive">
-                    <table class="table table-striped" style="color: #fff;">
-                        <thead>
-                            <tr>
-                                <th>Fecha</th>
-                                <th>Rival</th>
-                                <th>Lugar</th>
-                                <th>Estadio</th>
-                                <th>Árbitro</th>
-                                <th>Acciones</th>
-                                <th>Estado Resultado</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <%
-                                List<Partido> listaPartidos = (List) request.getSession().getAttribute("listaPartidos");
-                                if (listaPartidos != null && !listaPartidos.isEmpty()) {
-                                    for (Partido partido : listaPartidos) {
-                            %>
-                            <tr>
-                                <td style="color: #fff;"><%=  partido.getFecha()%></td>
-                                <td style="color: #fff;"><%=  partido.getRival()%></td>
-                                <td style="color: #fff;"><%=  partido.getLugar()%></td>
-                                <td style="color: #fff;"><%=  partido.getEstadio()%></td>
-                                <td style="color: #fff;"><%=  partido.getArbitro()%></td>
-                                <td style="color: #fff;">
-                                    <form action="SvElimPartidos" method="POST">
-                                        <% if (!partido.isEstadoPartido()) { %>
-                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#cargarResultadoModal" style="background-color: #03e9f4; border-color: #03e9f4; color: black;">Cargar Resultado</button>
-                                        <% } else { %>
-                                        <button type="button" class="btn btn-primary" disabled>Cargar Resultado</button>
-                                        <% }%>
-                                        <button type="submit" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#eliminarPartidoModal" style="background-color: #FF0000; border-color: #FF0000; color: black;">Eliminar</button>
-                                        <input type="hidden" name="id" value="<%= partido.getIdPartido()%>">
-                                    </form>
+          <!-- Page content-->
+<div class="container-fluid">
+    <h1 class="mt-4">Lista de Partidos Programados</h1>
 
-                                </td>
-                                <td style="color: #fff;">
-                                    
-                                    
-                                    
-                                    <% 
-                                   String textoEstado;
+    <!-- Botón para cargar próximo partido -->
+    <button type="button" class="btn" style="width: 20%; padding: 10px 20px; font-size: 16px; background: #03e9f4; border: none; outline: none; border-radius: 5px; cursor: pointer; transition: background 0.3s ease; color: #000;" data-bs-toggle="modal" data-bs-target="#cargarProximoPartidoModal">Cargar Partido Próximo</button>
 
-                                 if(partido.isEstadoPartido()==true){
-                                        textoEstado = "Cargado";
-                                        }else{
-                                        textoEstado = "No Cargado";
-                                        }
-                                    
-                                    %>
-                                    
-                                    <%= textoEstado %>
-                                
-                                
-                                </td>
-                            </tr>
-                            <%
-                                }
-                                } else {
-                                    // Si no hay partidos programados, puedes mostrar un mensaje o realizar alguna acción adicional
-                                    out.println("<tr><td colspan='7' style='color: #fff;'>No hay partidos programados</td></tr>");
-                                }
-                            %>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
+    <div class="table-responsive">
+        <table class="table table-striped" style="color: #fff;">
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Rival</th>
+                    <th>Lugar</th>
+                    <th>Estadio</th>
+                    <th>Árbitro</th>
+                    <th>Acciones</th>
+                    <th>Estado Resultado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% 
+       request.getRequestDispatcher("SvPartidos").include(request, response);
+
+                    
+                    List<Partido> listaPartidos = (List) request.getSession().getAttribute("listaPartidos");
+                    if (listaPartidos != null && !listaPartidos.isEmpty()) {
+                        for (Partido partido : listaPartidos) {
+                %>
+                <tr>
+                    <td style="color: #fff;"><%= partido.getFecha()%></td>
+                    <td style="color: #fff;"><%= partido.getRival()%></td>
+                    <td style="color: #fff;"><%= partido.getLugar()%></td>
+                    <td style="color: #fff;"><%= partido.getEstadio()%></td>
+                    <td style="color: #fff;"><%= partido.getArbitro()%></td>
+                    <td style="color: #fff;">
+                        <form action="SvElimPartidos" method="POST">
+                            <% if (!partido.isEstadoPartido()) { %>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#cargarResultadoModal" style="background-color: #03e9f4; border-color: #03e9f4; color: black;">Cargar Resultado</button>
+                            <% } else { %>
+                            <button type="button" class="btn btn-primary" disabled>Cargar Resultado</button>
+                            <% }%>
+                            <button type="submit" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#eliminarPartidoModal" style="background-color: #FF0000; border-color: #FF0000; color: black;">Eliminar</button>
+                            <input type="hidden" name="id" value="<%= partido.getIdPartido()%>">
+                        </form>
+                    </td>
+                    <td style="color: #fff;">
+                        <% 
+                        String textoEstado;
+                        if(partido.isEstadoPartido()) {
+                            textoEstado = "Cargado";
+                        } else {
+                            textoEstado = "No Cargado";
+                        }
+                        %>
+                        <%= textoEstado %>
+                    </td>
+                </tr>
+                <% } } else { %>
+                <tr><td colspan='7' style='color: #fff;'>No hay partidos programados</td></tr>
+                <% } %>
+            </tbody>
+        </table>
     </div>
+</div>
 
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
     <script src="js/scripts.js"></script>
 
-        <!-- Modal para cargar resultado del partido -->
+        <!-- Modal para cargar estadistica del partido -->
     <div class="modal fade" id="cargarResultadoModal" tabindex="-1" aria-labelledby="cargarResultadoModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content" style="background-color: #141e30; color: #fff;">
              <div class="modal-header">
-    <h5 class="modal-title" id="cargarResultadoModalLabel">Cargar Resultado del Partido</h5>
+    <h5 class="modal-title" id="cargarResultadoModalLabel">Cargar Estadistica del Partido</h5>
     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 </div>
 
@@ -115,12 +103,12 @@
                             <input type="text" name="equipoVisitante" class="form-control" id="equipoVisitante">
                         </div>
                         <div class="mb-3">
-                            <label for="golesLocal" class="form-label">Goles del Equipo Local:</label>
-                            <input type="number" name="golesEqLocal" class="form-control" id="golesLocal">
+                            <label for="golesConvertidos" class="form-label">Goles Convertidos:</label>
+                            <input type="number" name="golesConvertidos" class="form-control" id="golesConvertidos">
                         </div>
                         <div class="mb-3">
-                            <label for="golesVisitante" class="form-label">Goles del Equipo Visitante:</label>
-                            <input type="number" name="golesEqVisit" class="form-control" id="golesVisitante">
+                            <label for="golesRecibidos" class="form-label">Goles Recibidos: </label>
+                            <input type="number" name="golesRecibidos" class="form-control" id="golesRecibidos">
                         </div>
                         <div class="mb-3">
                             <label for="tarjetasLocal" class="form-label">Tarjetas del Equipo Local:</label>
