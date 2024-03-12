@@ -52,9 +52,9 @@ Acceso de Prueba
 
 ### Credenciales
 
-Usuario: admin
-Contraseña: 12345
-Nota: Es posible que experimentes demoras en la carga de información debido al servidor de pruebas. Por favor, ten paciencia.
+- Usuario: admin
+- Contraseña: 12345
+- Nota: Es posible que experimentes demoras en la carga de información debido al servidor de pruebas. Por favor, ten paciencia.
 
 ### Diagrama UML
 <p>Se adjunta un <a href="https://drive.google.com/file/d/1rkSuG_ZtOu3j8wCQxb1wvTukHvQvNbGu/view?usp=drive_link">diagrama UML</a> que muestra las relaciones entre las diferentes clases del sistema.</p>
