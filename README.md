@@ -10,12 +10,12 @@ Este proyecto consiste en un sistema de gestión para un equipo de fútbol, dise
 - Control de presupuesto: Gestiona el presupuesto del equipo, registrando compras y ventas de jugadores. Actualiza dinámicamente la lista de jugadores y el monto del presupuesto.
 
 ### Tecnologías Utilizadas
-Java
-MySQL
-JPA
-Bootstrap
-HTML
-CSS
+- Java
+- MySQL
+- JPA
+- Bootstrap
+- HTML
+- CSS
 
 ### Arquitectura y Patrones de Diseño
 Modelo-Vista-Controlador (MVC): La arquitectura sigue este patrón de diseño, separando claramente las responsabilidades entre la capa de presentación, la capa de lógica de negocio y la capa de control. Esto facilita el mantenimiento y la escalabilidad del sistema.
