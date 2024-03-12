@@ -20,6 +20,20 @@ Este proyecto consiste en un sistema de gestión para un equipo de fútbol, dise
 Modelo-Vista-Controlador (MVC): La arquitectura sigue este patrón de diseño, separando claramente las responsabilidades entre la capa de presentación, la capa de lógica de negocio y la capa de control. Esto facilita el mantenimiento y la escalabilidad del sistema.
 Persistencia de Datos con JPA: Se utiliza JPA (Java Persistence API) para interactuar con la base de datos MySQL, permitiendo una interacción fácil y robusta con los datos.
 
+
+
+### Front-end
+El front-end de la aplicación se desarrolló utilizando JSP (JavaServer Pages) para la generación dinámica de contenido HTML. Se combinó HTML con JSP scriptlets para crear páginas web dinámicas adaptadas a las necesidades del usuario y los datos del servidor. Además, se utilizó Bootstrap para mejorar el diseño y la apariencia de la interfaz de usuario, aprovechando sus componentes y estilos predefinidos. La integración de una plantilla predefinida de Bootstrap facilitó el desarrollo y aseguró la consistencia del diseño en todo el sistema. Esta combinación de tecnologías proporcionó una interfaz de usuario atractiva y receptiva para los usuarios del sistema.
+
+### Back-end
+El back-end de la aplicación se desarrolló principalmente con Java y Servlets para manejar las solicitudes y generar respuestas dinámicas. Para la persistencia de datos, se utilizó MySQL como base de datos, con JPA (Java Persistence API) como unidad de persistencia para interactuar con la base de datos alojada en Clever Cloud.
+
+La arquitectura sigue el patrón de diseño Modelo-Vista-Controlador (MVC), donde se separan claramente las responsabilidades entre la capa de presentación (Vista), la capa de lógica de negocio (Modelo) y la capa de control (Controlador). Esta separación facilita el mantenimiento y la escalabilidad del sistema.
+
+La capa de lógica de persistencia se encarga de gestionar los datos y la lógica de negocio de la aplicación. JPA se utiliza para mapear objetos Java a entidades de la base de datos y proporcionar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) de manera eficiente. Esto permite una interacción fácil y robusta con la base de datos, asegurando la integridad y consistencia de los datos.
+
+
+
 ### Uso
 Asegúrate de tener instalados los siguientes componentes:
 
