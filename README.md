@@ -63,7 +63,7 @@ Accede a la Aplicación:
 Una vez que NetBeans haya desplegado la aplicación en tu servidor de aplicaciones, abre un navegador web y accede a la URL donde está alojada la aplicación. Por lo general, la URL será http://localhost:8080/AdministracionFutbol.
 Acceso de Prueba
 
-### Credenciales
+### Credenciales Prueba
 
 - Usuario: admin
 - Contraseña: 12345
