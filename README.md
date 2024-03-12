@@ -1,12 +1,13 @@
 
 
-## Administración de Fútbol
-Este proyecto consiste en un sistema de gestión para un equipo de fútbol, diseñado para ser utilizado principalmente por el personal administrativo y el cuerpo técnico del equipo. Permite la administración de jugadores, partidos, estadísticas y presupuesto del equipo.
+## Administración de Fútbol <a href="https://www.java.com" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" alt="java" width="50" height="50"/> </a> <a href="https://www.mysql.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg" alt="mysql" width="50" height="50"/> </a> 
+Este proyecto consiste en un sistema de gestión para un equipo de fútbol, diseñado para ser utilizado principalmente por el personal administrativo. Permite la administración de jugadores, partidos, estadísticas y presupuesto del equipo.
 
 ### Funcionalidades Principales
-Administrar datos de jugadores y partidos: Permite agregar, editar y eliminar jugadores, así como programar, actualizar y cancelar partidos.
-Gestión de estadísticas: Analiza y visualiza estadísticas de los partidos, incluyendo goles, tarjetas y otras métricas relevantes. Permite la gestión de goleadores y asistidores.
-Control de presupuesto: Gestiona el presupuesto del equipo, registrando compras y ventas de jugadores. Actualiza dinámicamente la lista de jugadores y el monto del presupuesto.
+
+- Administrar datos de jugadores y partidos: Permite agregar, editar y eliminar jugadores, así como programar, actualizar y cargar resultados y estadisticas de los partidos.
+- Gestión de estadísticas: Analiza y visualiza estadísticas de los partidos, incluyendo goles, tarjetas y otras métricas relevantes de forma dinamica. Permite la gestión de goleadores y asistidores.
+- Control de presupuesto: Gestiona el presupuesto del equipo, registrando compras y ventas de jugadores. Actualiza dinámicamente la lista de jugadores y el monto del presupuesto.
 
 ### Tecnologías Utilizadas
 Java
