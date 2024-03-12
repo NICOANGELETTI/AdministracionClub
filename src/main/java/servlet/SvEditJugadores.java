@@ -41,6 +41,10 @@ public class SvEditJugadores extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
         
+        int idJugador = Integer.parseInt(request.getParameter("idEdit"));
+        
+        
+        
         String nombre = request.getParameter("nombreEditar");
         
         String nacionalidad = request.getParameter("nacionalidadEditar");
@@ -61,7 +65,7 @@ public class SvEditJugadores extends HttpServlet {
             // Manejo de errores si la conversión falla
             e.printStackTrace(); // O manejar el error de alguna otra manera
         }
-        Jugador jugador = (Jugador) request.getSession().getAttribute("jugadorEdit");
+        Jugador jugador = control.traerJugador(idJugador);
         
         jugador.setNombre(nombre);
         jugador.setFecha_nac(fecha);

@@ -40,6 +40,8 @@
                         </thead>
                         <tbody>
                             <%  
+                                        request.getRequestDispatcher("SvEditJugadores").include(request, response); //Esta Linea hace que se actualice automaticamente
+                                        request.getRequestDispatcher("SvJugadores").include(request, response); //Esta Linea hace que se actualice automaticamente
                             List<Jugador> listaJugadores = (List<Jugador>)request.getSession().getAttribute("listaJugadores");
 
                             if (listaJugadores != null && !listaJugadores.isEmpty()) {
@@ -58,16 +60,22 @@
                                 
                                
                                 <td>
-                                    <!-- Botón para abrir el modal de editar jugador -->
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editarJugadorModal" style="background-color: #03e9f4; border-color: #03e9f4; color: black;">
-                                        Editar Jugador
-                                    </button>
+
 
 
                                     <form action="SvElimJugador" method="POST" style="display: inline;">
                                         <input type="hidden" name="idJugador" value="<%= jugador.getIdJugador()%>">
                                         <button type="submit" class="btn btn-danger">Eliminar</button>
                                     </form>
+                                        
+                                        
+                  <!-- Botón para abrir el modal de edición de jugador -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalEditarJugador<%= jugador.getIdJugador() %>" style="background-color: #03e9f4; border-color: #03e9f4; color: black;">
+    Editar Jugador
+</button>
+
+                                        
+                                        
                                 </td>
                             </tr>
                             <%  
@@ -135,65 +143,74 @@
         </div>
     </div>
     
-    <%  
-                            listaJugadores = (List<Jugador>)request.getSession().getAttribute("listaJugadores");
-
-                          
-                                for(Jugador juga : listaJugadores){
-                                
-                            %>
-
-    <!-- Modal para editar jugador -->
-    <div class="modal fade" id="editarJugadorModal" tabindex="-1" aria-labelledby="editarJugadorModalLabel" aria-hidden="true">
+    
+    
+    
+    <!-- Modal editar Jugador -->
+<% for (Jugador jugadorEdit : listaJugadores) { %>
+    <div class="modal fade" id="modalEditarJugador<%= jugadorEdit.getIdJugador() %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content" style="background-color: #141e30; color: #fff;">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="editarJugadorModalLabel">Editar Jugador</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Editar Jugador</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <!-- Formulario para editar jugador -->
-                    <form action="SvEditJugadores" method="POST">
-                        <!-- Campos prellenados con los datos del jugador a editar -->
-                        <div class="mb-3">
-                            <label for="nombreEditar" class="form-label">Nombre:</label>
-                            <input name="nombreEditar" type="text" class="form-control" id="nombreEditar" style="color: #000;" value="<%=  juga.getNombre() %>">
+                <form action="SvEditJugadores" method="POST">
+                    <input type="hidden" name="idEdit" value="<%= jugadorEdit.getIdJugador() %>">
+                    <div class="modal-body">
+                        <div class="m-3"> <!-- Agregamos un margen alrededor del contenido del formulario -->
+                            <div class="mb-3">
+                                <label for="nombreEditar" class="form-label">Nombre:</label>
+                                <input name="nombreEditar" type="text" class="form-control" id="nombreEditar" style="color: #000;" value="<%=  jugadorEdit.getNombre() %>">
+                            </div>
+                            <div class="mb-3">
+                                <label for="fechaNacimientoEditar" class="form-label">Fecha de Nacimiento:</label>
+                                <input name="fechaNacimientoEditar" type="date" class="form-control" id="fechaNacimientoEditar" style="color: #000;" value="<%=  jugadorEdit.getFecha_nac() %>"> 
+                            </div>
+                            <div class="mb-3">
+                                <label for="nacionalidadEditar" class="form-label">Nacionalidad:</label>
+                                <input name="nacionalidadEditar" type="text" class="form-control" id="nacionalidadEditar" style="color: #000;" value="<%=  jugadorEdit.getNacionalidad()  %>">
+                            </div>
+                            <div class="mb-3">
+                                <label for="posicionEditar" class="form-label">Posición:</label>
+                                <select name="posicionEditar" class="form-select" id="posicionEditar" style="color: #000;" value="<%=  jugadorEdit.getPosicion() %>"> 
+                                    <option value="ARQ">ARQ</option>
+                                    <option value="DEF">DEF</option>
+                                    <option value="MED">MED</option>
+                                    <option value="DEL">DEL</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="estadoEditar" class="form-label">Estado:</label>
+                                <select name="estadoEditar" class="form-select" id="estadoEditar" style="color: #000;" value="<%=  jugadorEdit.getEstado() %>">
+                                    <option value="Activo">Activo</option>
+                                    <option value="Lesionado">Lesionado</option>
+                                    <option value="Relegado">Relegado</option>
+                                </select>
+                            </div>
                         </div>
-                        <div class="mb-3">
-                            <label for="fechaNacimientoEditar" class="form-label">Fecha de Nacimiento:</label>
-                            <input name="fechaNacimientoEditar" type="date" class="form-control" id="fechaNacimientoEditar" style="color: #000;" value="<%=  juga.getFecha_nac() %>"> 
-                        </div>
-                        <div class="mb-3">
-                            <label for="nacionalidadEditar" class="form-label">Nacionalidad:</label>
-                            <input name="nacionalidadEditar" type="text" class="form-control" id="nacionalidadEditar" style="color: #000;" value="<%=  juga.getNacionalidad()  %>">
-                        </div>
-                        <div class="mb-3">
-                            <label for="posicionEditar" class="form-label">Posición:</label>
-                            <select name="posicionEditar" class="form-select" id="posicionEditar" style="color: #000;" value="<%=  juga.getPosicion() %>"> 
-                                <option value="ARQ">ARQ</option>
-                                <option value="DEF">DEF</option>
-                                <option value="MED">MED</option>
-                                <option value="DEL">DEL</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label for="estadoEditar" class="form-label">Estado:</label>
-                            <select name="estadoEditar" class="form-select" id="estadoEditar" style="color: #000;" value="<%=  juga.getEstado() %>">
-                                <option value="Activo">Activo</option>
-                                <option value="Lesionado">Lesionado</option>
-                                <option value="Relegado">Relegado</option>
-                            </select>
-                        </div>
-                        <!-- Agrega más campos prellenados con otros atributos del jugador -->
-                        <!-- Por ejemplo: edad, altura, peso, etc. -->
-                        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-                        
-                        <% }%>
-                    </form>
-                </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
+<% } %>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+ 
 
 </body>
 </html>
