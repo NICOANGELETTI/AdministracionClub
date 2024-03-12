@@ -10,12 +10,11 @@ Este proyecto consiste en un sistema de gestión para un equipo de fútbol, dise
 - Control de presupuesto: Gestiona el presupuesto del equipo, registrando compras y ventas de jugadores. Actualiza dinámicamente la lista de jugadores y el monto del presupuesto.
 
 ### Tecnologías Utilizadas
-- Java
-- MySQL
-- JPA
-- Bootstrap
-- HTML
-- CSS
+![Java](https://img.shields.io/badge/-Java-007396?style=flat&logo=java)
+![MySQL](https://img.shields.io/badge/-MySQL-4479A1?style=flat&logo=mysql&logoColor=white)
+![Bootstrap](https://img.shields.io/badge/-Bootstrap-563D7C?style=flat&logo=bootstrap)
+![HTML](https://img.shields.io/badge/-HTML-E34F26?style=flat&logo=html5&logoColor=white)
+![CSS](https://img.shields.io/badge/-CSS-1572B6?style=flat&logo=css3)
 
 ### Arquitectura y Patrones de Diseño
 Modelo-Vista-Controlador (MVC): La arquitectura sigue este patrón de diseño, separando claramente las responsabilidades entre la capa de presentación, la capa de lógica de negocio y la capa de control. Esto facilita el mantenimiento y la escalabilidad del sistema.
