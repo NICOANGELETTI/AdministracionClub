@@ -35,9 +35,16 @@
                         </thead>
                        <tbody>
                            
+                  
+                         
+                                    
                            
-    <% List<Goleador> listaGoleadores = (List) request.getSession().getAttribute("listaGoleadores");
-        for (Goleador goleador : listaGoleadores) { %>
+               
+    <% 
+        request.getRequestDispatcher("SvGoleador").include(request, response); //Esta Linea hace que se actualice automaticamente
+        List<Goleador> listaGoleadores = (List<Goleador>) request.getSession().getAttribute("listaGoleadores");
+       if (listaGoleadores != null && !listaGoleadores.isEmpty()) {
+              for (Goleador goleador : listaGoleadores) { %>
     <tr>
         <td style="color: white;"><%= goleador.getNombre()%></td>
         <td style="color: white;"><%= goleador.getPosicion()%></td>
@@ -47,14 +54,17 @@
                 <input type="hidden" name="idGoleador" value="<%= goleador.getIdJugador()%>">
                 <button type="submit" class="btn btn-danger" style="background-color: #ff0000; border-color: #ff0000; color: black;">Eliminar</button>
             </form>
-            <form action="SvEditGoleador"  method="GET" style="display: inline-block;">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalEditarGoleador<%= goleador.getIdJugador() %>" style="background-color: #03e9f4; border-color: #03e9f4; color: black;">
-                    Editar Cant. Goles
-                </button>
-                <input type="text" name="idEdit" value="<%= goleador.getIdJugador()%>">
-            </form>
+          
+                <!-- Botón para abrir el modal de edición de goles -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalEditarGoleador<%= goleador.getIdJugador() %>" style="background-color: #03e9f4; border-color: #03e9f4; color: black;">
+    Editar Cant. Goles
+</button>
+        
+
+                    
         </td>
     </tr>
+    <% } %>
     <% } %>
 </tbody>
 
@@ -96,10 +106,13 @@
                 </div>
                                         
                         
-                                    <%  %>
+
                                     
-              <!-- Modal Editar Goleador -->
-<%   listaGoleadores = (List<Goleador>) request.getSession().getAttribute("listaGoleadores");
+                                 
+                                    
+         <!--  Modal editar Goleador -->
+                                        
+<%  
     for (Goleador goleadorEdit : listaGoleadores) { %>
 <div class="modal fade" id="modalEditarGoleador<%= goleadorEdit.getIdJugador() %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -109,11 +122,15 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             
+            
+            
             <form action="SvEditGoleador" method="POST">
                 <input type="hidden" name="idEdit" value="<%= goleadorEdit.getIdJugador() %>">
                 <div class="modal-body">
                     <input name="golesGoleador" type="number" id="golesGoleador" class="form-control" placeholder="Cantidad de goles" style="color: #000; background-color: #fff;"  value="<%= goleadorEdit.getGoles() %>">
                 </div>
+                <input type="hidden" name="idEdit" value="<%= goleadorEdit.getIdJugador() %>">
+
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="background-color: #6c757d; border-color: #6c757d; color: #000;">Cerrar</button>
                     <button type="submit" class="btn btn-primary" style="background-color: #03e9f4; border-color: #03e9f4; color: #000;">Guardar cambios</button>
@@ -122,7 +139,7 @@
         </div>
     </div>
 </div>
-<% } %>
+<% } %>  
 
 
                 <!-- Tabla de asistidores -->
@@ -138,7 +155,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <%    request.getRequestDispatcher("SvAsistidor").include(request, response); %>            
+                            <%    request.getRequestDispatcher("SvAsistidor").include(request, response);  //Esta Linea hace que se actualice automaticamente %>            
                             <% List<Asistidor> asistidoresList = (List<Asistidor>) request.getSession().getAttribute("listaDeAsistidores");
                                 if (asistidoresList != null && !asistidoresList.isEmpty()) {
                                     for (Asistidor asistidor : asistidoresList) { %>
@@ -151,8 +168,14 @@
                                         <button type="submit" class="btn btn-danger" style="background-color: #ff0000; border-color: #ff0000; color: black;">Eliminar</button>
                                         <input type="hidden" name="idAsistidor" value="<%= asistidor.getIdJugador()%>">   
                                     </form>
-                                    <button type="button" class="btn btn-primary" style="background-color: #03e9f4; border-color: #03e9f4; color: black;">Editar Cant. Asist</button>
-                                </td>
+                                    
+                                    
+                                  
+ <!-- Botón para editar cantidad de asistencias -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalEditarAsistidor<%= asistidor.getIdJugador() %>" style="background-color: #03e9f4; border-color: #03e9f4; color: black;">
+    Editar Cant. Asistencias
+</button>                        
+                                    </td>
                             </tr>
                             <% }
                                 } else { %>
@@ -167,6 +190,9 @@
                 <div class="mb-3">
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agregarAsistidorModal" style="background-color: #03e9f4; border-color: #03e9f4; color: black;">Agregar Asistidor</button>
                 </div>
+                
+                
+                
                 <!-- Modal para agregar asistidor -->
                 <div class="modal fade" id="agregarAsistidorModal" tabindex="-1" aria-labelledby="agregarAsistidorModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -177,6 +203,7 @@
                             </div>
                             <div class="modal-body">
                                 <form action="SvAsistidor" method="POST">
+                                    
                                     <label for="idJugador" class="form-label">Nombre del Goleador:</label>
                                     <select name="idJugador" class="form-select" id="idJugador" style="color: #000; background-color: #fff;">
                                         <% if (listaJugadores != null && !listaJugadores.isEmpty()) {
@@ -195,6 +222,46 @@
                         </div>
                     </div>
                 </div>
+                                    
+                          
+                                    
+                                    
+                                <!-- Botón para editar la cantidad de asistencias -->
+<% for (Asistidor asistidorEdit : asistidoresList) { %>
+
+
+    <!-- Modal para editar la cantidad de asistencias -->
+    <div class="modal fade" id="modalEditarAsistidor<%= asistidorEdit.getIdJugador() %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" style="background-color: #141e30; color: #fff;">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Editar Cant. Asistencias</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="SvEditAsistidor" method="POST">
+                    <input type="hidden" name="idAsistidor" value="<%= asistidorEdit.getIdJugador() %>">
+                    <div class="modal-body">
+                        <label for="asistenciasAsistidor" class="form-label">Cantidad de Asistencias</label>
+                        <input name="asistenciasAsistidor" type="number" id="asistenciasAsistidor" class="form-control" placeholder="Cantidad de asistencias" style="color: #000; background-color: #fff;" value="<%= asistidorEdit.getAsistencias() %>">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="background-color: #6c757d; border-color: #6c757d; color: #000;">Cerrar</button>
+                        <button type="submit" class="btn btn-primary" style="background-color: #03e9f4; border-color: #03e9f4; color: #000;">Guardar cambios</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+<% } %>
+          
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
                 <div class="container-fluid text-center">
                     <% request.getRequestDispatcher("SvEstadisticas").include(request, response); %>
                     <div class="container-fluid">

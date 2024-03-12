@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import logica.Asistidor;
 import logica.ControladoraLogica;
 
 
@@ -38,7 +39,19 @@ public class SvEditAsistidor extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
         
+        
+        int idAsistidor = Integer.parseInt(request.getParameter("idAsistidor"));
+        int asistencias = Integer.parseInt(request.getParameter("asistenciasAsistidor"));
+        
+        
+        Asistidor asistidorEdit = control.traerAsitidor(idAsistidor);
+        
+        
+       asistidorEdit.setAsistencias(asistencias);
        
+       control.editarAsistidor(asistidorEdit);
+       
+       response.sendRedirect("SvEstadisticas");
         
         
         

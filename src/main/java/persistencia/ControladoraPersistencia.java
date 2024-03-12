@@ -227,7 +227,19 @@ public class ControladoraPersistencia {
         }
 
         }
+    
+     public Asistidor traerAsistidor(int idAsistidor) {
+         return asistidorJPA.findAsistidor(idAsistidor);
+     }
+    
+    public void editarAsistidor(Asistidor asistidor) {
 
+        try {
+            asistidorJPA.edit(asistidor);
+        } catch (Exception ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        }
     
     //Presupuesto
     public void crearPresupuesto(Presupuesto presupuesto) {
@@ -251,6 +263,10 @@ public class ControladoraPersistencia {
         return presupuestoJPA.findPresupuestoEntities();
        
     }
+
+
+
+   
 
   
    

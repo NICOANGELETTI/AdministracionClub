@@ -262,10 +262,21 @@ public class ControladoraLogica {
 }
    
    
+   public Asistidor traerAsitidor(int idAsistidor){
+       return controlPersis.traerAsistidor(idAsistidor);
+       
+       
+   }
+   
    public void eliminarAsistidor(int idAsistidor){
        controlPersis.eliminarAsistidor(idAsistidor);
    }
 
+   
+   public void editarAsistidor(Asistidor asistidor){
+       controlPersis.editarAsistidor(asistidor);
+   }
+   
 
    //Presupuesto
    

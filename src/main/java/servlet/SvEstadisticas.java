@@ -9,7 +9,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import logica.ControladoraLogica;
+import logica.Goleador;
 import logica.Resultado;
 
 
@@ -93,6 +95,12 @@ request.setAttribute("penalesTotalesRecibidos", penalesTotalesRecibidos);
 request.setAttribute("tarjetasTotalProvocadas", tarjetasTotalProvocadas);
 request.setAttribute("tarjetasTotalRecibidas", tarjetasTotalRecibidas);
     
+
+
+
+   
+
+
 
     // Ahora puedes redirigir a tu JSP
     response.sendRedirect("estadisticas.jsp");
